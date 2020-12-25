@@ -231,7 +231,13 @@
 	    .cd-top {
 	        right: 20px;
 	        bottom: 20px;
-	    }
+		}
+		.heading-1-banner{
+			font-size: 30px;
+		}
+		.heading-2-banner{
+			font-size: 25px;
+		}
 	}
 	@media only screen and (min-width: 1024px) {
 	    .cd-top {
@@ -271,12 +277,36 @@
 	    background-color: #330000;
 	}
 
+	.hero-section {
+		min-height: 600px;
+		position: relative;
+		text-align: center;
+		background-size: cover;
+		background-repeat: no-repeat;
+		padding: 0;
+	}
+
+	.heading-1-banner{
+		font-size: 70px;
+		text-shadow: 5px 5px #4d0000;
+		text-transform: uppercase;
+	    margin: 0;
+		line-height: 40px;
+		color: #fff5e6;
+	    padding-bottom: 25px;
+	}
+
 	.heading-2-banner{
 		font-size: 23px;
 		font-weight: 500;
 		margin-top: 20px;
 		text-shadow: 1px 1px #ffff1a;
 		letter-spacing: 2px;
+		padding-bottom: 25px;
+	    line-height:  18px;
+	    color: #fff5e6;
+	    font-weight: 400;
+	    text-transform:  uppercase;
 	}
 
 	.navigation-block,.cart-block {
@@ -351,15 +381,7 @@
 	section {
 	    padding-top: 40px;
 	}
-	.hero-section {
-		min-height: 600px;
-		position: relative;
-		text-align: center;
-		background-size: cover;
-		background-repeat: no-repeat;
-		padding: 0;
-	}
-
+	
 	.custom-container {
 	    position: absolute;
 	    top: 50%;
@@ -368,24 +390,6 @@
         transform: translateY(-50%);
 	    left: 0;
 	    right: 0;
-	}
-
-	.hero-section h2 {
-	    font-size: 36px;
-	    text-transform: uppercase;
-	    margin: 0;
-		line-height: 40px;
-		color: #fff5e6;
-	    padding-bottom: 25px;
-	}
-	.hero-section p {
-	    padding-bottom: 25px;
-	    margin: 0;
-	    font-size:  16px;
-	    line-height:  18px;
-	    color: #fff5e6;
-	    font-weight: 400;
-	    text-transform:  uppercase;
 	}
 
 	/*collection section css*/
