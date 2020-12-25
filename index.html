@@ -32,29 +32,13 @@
     <main class="wrapper">
         <!--  header section -->
         <header class="header-section">
-            <div class="code-block">
-                <div class="container">
-                    <p class="offCode">
-                        <span>30% OFF + FREE STREAMING </span>Till OCTOBER 16, 2018. USE CODE:
-                        <span>OFF30</span>
-                    </p>
-                </div>
-            </div>
             <div class="header-nav">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-2 col-sm-6 col-xs-6 brand-block">
-                            <span class="logo-heading"><h2>Movies List</h2></span>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-6 pull-right cart-block text-right">
-                            <ul class="cart-links">
-                                <li>
-                                    <input type="text" class="search" ng-model="searchText" ng-keyup="searchText" placeholder="By name, country, year, lang">
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0);">SEARCH</a>
-                                </li>
-                            </ul>
+                            <span class="logo-heading">
+                                <h2>Abhiruchi</h2>
+                            </span>
                         </div>
                         <div class="col-md-7 col-sm-12 col-xs-12 navigation-block">
                             <button type="button" class="collapse-switch">
@@ -64,16 +48,22 @@
                             </button>
                             <ul class="nav-links">
                                 <li>
-                                    <a href="#">Home</a>
+                                    <a href="#home">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">About</a>
+                                    <a href="#aboutMe">About Me</a>
                                 </li>
                                 <li>
-                                    <a href="#">Moview Reviews</a>
+                                    <a href="#skillset">Skill</a>
                                 </li>
                                 <li>
-                                    <a href="#">Contact</a>
+                                    <a href="#experience">Experience</a>
+                                </li>
+                                <li>
+                                    <a href="#education">Education</a>
+                                </li>
+                                <li>
+                                    <a href="#contact">Contact</a>
                                 </li>
                             </ul>
                         </div>
@@ -82,285 +72,189 @@
             </div>
         </header>
         <!--  /.header section -->
-        <!--  hero section -->
-        <section class="hero-section" style="background-image:url(images/hero-banner.jpg);">
+        <!--  main section -->
+        <section class="hero-section" style="background-image:url(images/hero-banner.jpg);" id="home">
             <div class="container custom-container">
-                <h2>find the best collections here</h2>
-                <p>CApturing the best imagination of viewers</p>
-                <a href="#" class="btn btn-black">get started</a>
+                <h2 style="font-size: 70px;text-shadow: 5px 5px #4d0000;">HI, I'M ABHIRUCHI MAURYA</h2>
+                <p class="heading-2-banner">FRONTEND WEB Developer | React Native Developer</p>
             </div>
         </section>
-        <!--  /.hero section -->
-        <!--  collection section -->
-        <section class="our-collections">
-            <div class="container">
-                <div class="section-heading">
-                    <h2>OUR COLLECTION</h2>
-                </div>                
-                <ul class="collection-listings clearfix">
-                    <li ng-if="movieList.length>0;" ng-repeat="m in movieList | limitTo: limit | limitTo: -9 | filter:search">
-                        <div class="row">
-                            <h2>{{m.movie_title}}</h2>
-
-                        </div>
-                        <div class="row">
-                            <label>Director name : </label>
-                            <span class="p-l-2 text-spacing">{{m.director_name}}</span>                        
-                        </div>
-                        <div class="row">
-                            <label>Ratings : </label><span class="p-l-2 text-spacing">{{m.content_rating}}</span>                        
-                        </div>                        
-                        <div class="row">
-                            <label>Genres : </label>
-                            <span ng-repeat="k in m.genres.split('|')">
-                                <span class="p-l-2 text-spacing genres" >
-                                    {{k}}
-                                </span>
-                            </span>                        
-                        </div>
-                        <div class="row">
-                            <label>Cast :</label><span class="p-l-2">{{m.actor_1_name}}</span>,<span>{{m.actor_2_name}}</span>                        
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 p-l-0" >
-                                <label>Language : </label>
-                                <span>{{m.language}}</span>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Country : </label>
-                                <span>{{m.country}}</span>
-                            </div> 
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 p-l-0">
-                                <label>Budget : </label>
-                                <span>{{m.budget}}</span>
-                            </div>
-                            <div class="col-md-6">
-                                <label>Year : </label>
-                                <span>{{m.title_year}}</span>
-                            </div>
-                        </div>
-                        <div class="row key-words">
-                            <label>Keywords : </label>
-                            <span ng-repeat="k in m.plot_keywords.split('|')">
-                                <span class="keywords">
-                                     {{k}}
-                                </span>                               
-                            </span>
-                        
-                        </div>
-                    </li>                                      
-                </ul>
-                <ul ng-if="noRecord">No records found!</ul>
-                <div class="movie-pagination">
-                    <button class="btn btn-success" ng-disabled="currentPage == 0" ng-click="decrementLimit()">
-                        Back
-                    </button>
-                    <button class="btn btn-info">
-                        {{currentPage+1}}/{{numberOfPages()}}
-                    </button>
-                    <button class="btn btn-success" ng-disabled="currentPage >= data_length/pageSize - 1" ng-click="incrementLimit()">
-                        Next
-                    </button>
-                </div>
+        <section id="aboutMe">
+            <div class="section-heading" style="padding:20px ;">
+                <h2 style="color: #330000;font-weight: 700;">ABOUT ME</h2>
             </div>
-        </section>
-        <!--  /.collection section -->
-        <!-- blue box section -->
-        <section class="blue-box-section">
-            <div class="container">
-                <div id="testimonials">
-                    <div class="testimonials-wrapper">
-                        <a id="nextpage" class="testimonials-trigger pos_nav" data-animation="61" data-goto="-1">&rarr;</a>
-                        <a id="prevpage" class="testimonials-trigger pos_nav" data-animation="60" data-goto="-2">&larr;</a>
-                        <div class="pt-page">
-                            <div class="blue-box">
-                                <div class="blue-box_content">
-                                    <p>Very pleased with the quality of our collections! A company that gives a weet with
-                                        your order will definitely get a return visit!</p>
-                                    <h4>@Abhiruchi20</h4>
-                                </div>
-                            </div>
+            <div class="row">
+                <div class="container">
+                    <div class="col-md-6">
+                        <div style="text-align: center;">
+                            <img src="images/profile-pic.jfif" alt="ProfilePhoto"
+                                style="width:400px; border: 10px solid #330000;border-radius: 50%;">
                         </div>
-                        <div class="pt-page">
-                            <div class="blue-box">
-                                <div class="blue-box_content">
-                                    <p>Very pleased with the quality of our collections! A company that gives a weet with
-                                        your order will definitely get a return visit!</p>
-                                    <h4>@Abhiruchi20</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-page">
-                            <div class="blue-box">
-                                <div class="blue-box_content">
-                                    <p>Very pleased with the quality of our collections! A company that gives a weet with
-                                        your order will definitely get a return visit!</p>
-                                    <h4>@Abhiruchi20</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-page">
-                            <div class="blue-box">
-                                <div class="blue-box_content">
-                                    <p>Very pleased with the quality of our collections! A company that gives a weet with
-                                        your order will definitely get a return visit!</p>
-                                    <h4>@Abhiruchi10</h4>
-                                </div>
-                            </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div
+                            style="border-radius: 15px 50px; border-left: 5px solid #330000;border-right: 5px solid #330000;">
+                            <p style="font-size: 18px;line-height: 2;padding:20px;font-weight: 500;">
+                               {{aboutMe}}
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
+            <div class="row" id="skillset">
+                <div class="container">
+                    <div class="row text-center">
+                        <h2 style="border-bottom: 7px double #330000; font-weight: 600;padding:10px;">Skillset 👩‍💻</h2>
+                    </div>
+                    <div class="skillset text-center">
+                        <img src="images/react-native.png">
+                        <img src="images/reactjs.png">
+                        <img src="images/angular.png">
+                        <img src="images/angularjs.png">
+                        <img src="images/ts.png">
+                        <img src="images/js.png">
+                        <img src="images/html5.png">
+                        <img src="images/css3.png">
+                        <img src="images/bootstrap.png">
+                        <img src="images/jquery.png">
+
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- /.blue box section -->
-        <!-- /.book sotre slider section -->
+        <!--  /.main section -->
+        <!--  experience section -->
+        <section class="our-collections" id="experience">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>EXPERIENCE 💼 </h2>
+                </div>
+                <ul class="collection-listings clearfix">
+                    <li ng-repeat="m in movieList">
+                        <div class="row">
+                            <h2>{{m.designation}}</h2>
+                        </div>
+                        <div class="row">
+                            <label>Company : </label>
+                            <span class="p-l-2 text-spacing">{{m.company}}</span>
+                        </div>
+                        <div class="row">
+                            <label>Period : </label>
+                            <span class="p-l-2 text-spacing">{{m.period}}</span>
+                        </div>
+                        <div class="row key-words">
+                            <label>Technology : </label>
+                            <span ng-repeat="k in m.technology.split(',')">
+                                <span class="keywords p-l-2 text-spacing">
+                                    {{k}}
+                                </span>
+                            </span>
+                        </div>
+                        <div class="row" ng-repeat="k in m.project" style="border: 0px">
+                            <div>
+                                <label>Project Name: </label>
+                                <span class="p-l-2 text-spacing">{{k.name}}</span>
+                            </div>
+                            <div style="margin-top: 5px;">
+                                <label>Technology Used: </label>
+                                <span ng-repeat="u in k.technology_used.split(',')">
+                                    <span class="keywords p-l-2 text-spacing">
+                                        {{u}}
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--  ./experience section -->
+        <!--  education section -->
+        <section id="education">
+            <div class="container">
+                <div class="section-heading">
+                    <h2 style="color: #330000;font-weight: 700;">EDUCATION 🎓</h2>
+                </div>
+                <ul class="collection-listings">
+                    <li ng-repeat="m in education"
+                        style="border-left:8px solid #990000;background-color: #ffff4d;min-height:300px;">
+                        <div class="row">
+                            <h2>{{m.name}}</h2>
+                        </div>
+                        <div class="row">
+                            <label>Institution : </label>
+                            <span class="p-l-2 text-spacing">{{m.institute}}</span>
+                        </div>
+                        <div class="row">
+                            <label>Period : </label><span class="p-l-2 text-spacing">{{m.period}}</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+        <!--  /.education section -->
+
         <!-- footer section -->
-        <footer class="footer-section">
+        <footer class="footer-section" id="contact">
             <div class="footer-links">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-9 col-sm-12 col-xs-12">
-                            <div class="row">
-                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                    <div class="footer-links_list">
-                                        <h3 class="footer-link-heading">Social Media</h3>
-                                        <ul class="footer-links-list">
-                                            <li>
-                                                <a href="#">Photo</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Social Timeline</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Social Page</a>
-                                            </li>                                           
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                    <div class="footer-links_list">
-                                        <h3 class="footer-link-heading">Movie List</h3>
-                                        <ul class="footer-links-list">
-                                            <li>
-                                                <a href="#">About us</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Pricing</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Blog</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Promotions</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Refer a friend</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="footer-links_list">
-                                        <h3 class="footer-link-heading">Streaming</h3>
-                                        <ul class="footer-links-list">
-                                            <li>
-                                                <a href="#">Subscribe a channel</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sell online</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                    <div class="footer-links_list">
-                                        <h3 class="footer-link-heading">Help</h3>
-                                        <ul class="footer-links-list">
-                                            <li>
-                                                <a href="#">Hire an expert</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">FAQ</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Support</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">How it works</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Shipping</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Return</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Privacy</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Terms</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="col-md-3 col-sm-3 col-xs-6">
-                                    <div class="footer-links_list">
-                                        <h3 class="footer-link-heading">Online Store</h3>
-                                        <ul class="footer-links-list">
-                                            <li>
-                                                <a href="#">Science fiction</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Satire</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Drama</a>
-                                            </li>                                           
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="section-heading">
+                            <h2>CONTACT 📞</h2>
                         </div>
-                        <div class="col-md-3 col-sm-12 col-xs-12 social-links-sec">
-                            <div class="footer-social-links">
-                                <h6>WE’re social!</h6>
-                                <ul class="social-links">
-                                    <li>
-                                        <a href="#">
-                                            <img src="images/facebook.png" alt="facebook" title="Facebook" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="images/twitter.png" alt="twitter" title="Twitter" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="images/instagram.png" alt="instagram" title="Instagram" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <img src="images/linkedin.png" alt="linkedin" title="Linkedin" />
-                                        </a>
-                                    </li>
-                                </ul>
-                                <p class="copy-right">Copyright &copy; 2018 Abhiruchi Maurya.</p>
+                        <div class="text-center" style="margin-top: 30px;">
+                            <div class="col-md-4 col-sm-12 col-xs-12 contact-section">
+                                <p style="font-size: 18px;color: #ffffff;">
+                                    📌Location
+                                </p>
+                                <p style="font-size: 18px;color: #ffffb3;">
+                                    Bangalore, India
+                                </p>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12 contact-section"
+                                style="border-right:5px dashed #ffff4d;border-left:5px dashed #ffff4d;">
+                                <p style="font-size: 18px;color: #ffffff;">
+                                    Feel free to get in touch!
+                                </p>
+                                <p style="font-size: 18px;color: #ffffb3; padding:10px;border:2px solid #ffff4d">
+                                    <span class="glyphicon glyphicon-envelope" style="margin-right: 10px;"></span>
+                                    abhiruchimaurya@outlook.com
+                                </p>
+                            </div>
+                            <div class="col-md-4 col-sm-12 col-xs-12">
+                                <div class="footer-social-links">
+                                    <h6>I am social ! Stay connected</h6>
+                                    <ul class="social-links">
+                                        <li>
+                                            <a href="https://twitter.com/abhiruchi1017">
+                                                <img src="images/twitter.png" alt="twitter" title="Twitter" />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://github.com/AbhiruchiMaurya">
+                                                <img src="images/github.png" alt="facebook" title="GitHub" />
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="https://www.linkedin.com/in/abhiruchi-maurya-365b5377/">
+                                                <img src="images/linkedin.png" alt="linkedin" title="Linkedin" />
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="code-block">
-                <div class="container">
-                    <p class="offCode">
-                        <span>30% OFF + FREE STREAMING </span>Till OCTOBER 16, 2018. USE CODE:
-                        <span>OFF30</span>
-                    </p>
-                </div>
-            </div>
         </footer>
+        <div class="code-block" style="background-color: #330000;">
+            <div class="container text-center">
+                <p class="copy-right">
+                    Copyright &copy; {{year}} Abhiruchi Maurya with ❤️
+                </p>
+            </div>
+        </div>
         <!-- /.footer section -->
     </main>
     <!-- scroll to top -->
@@ -383,4 +277,5 @@
     <!-- Site Custom jQ/JS -->
     <script src="js/custom.js" type="text/javascript"></script>
 </body>
+
 </html>

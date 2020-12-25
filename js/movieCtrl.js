@@ -1,64 +1,75 @@
 
 var app = angular.module('movieList', []);
-app.controller('movieCtrl',  ['$rootScope', '$scope',  '$http', '$timeout', '$window', function ($rootScope, $scope, $http, $timeout, $window) {
-    $http({
-        method: 'GET',
-        url: 'http://starlord.hackerearth.com/movieslisting'
-    })
-        .then(function (response) {
-            if (response.status == 200) {
-                $scope.movieList = response.data;
-                
-                $scope.data_length = $scope.movieList.length;
-                var currentPage = 0;
-                $scope.pageSize = 9;
+app.controller('movieCtrl',  ['$scope', function ( $scope) {
+   
+                $scope.movieList = [
+                    { 
+                        "designation":"Senior System Engineer",
+                        "company":"Infosys",
+                        "period": "2020-present",
+                        "technology":"ReactJS, React Native",
+                        "project":[
+                            {
+                                "name": "Traceibility App",
+                                "technology_used":"React Native"
+                            }
+                        ]
+                    },
+                    { 
+                        "designation":"Software Engineer",
+                        "company":"Iglulabs Pvt Ltd",
+                        "period": "2019-2020",
+                        "technology":"Angular , HTML5, CSS3, Bootstrap 4",
+                        "project":[
+                            {
+                                "name": "Alum-n-i Web App",
+                                "technology_used":"Angular, HTML5, CSS3, Bootstrap 4"
+                            },
+                            {
+                                "name": "Alum-n-i Dashboard",
+                                "technology_used":"Angular, HTML5, CSS3, Bootstrap 4"
+                            }
+                        ]
+                    },
+                    { 
+                        "designation":"Software Engineer",
+                        "company":"Sing Sys Software Pvt Ltd",
+                        "period": "2017-2019",
+                        "technology":"AngularJS , HTML, CSS, Bootstrap, jQuery",
+                        "project":[
+                            {
+                                "name": "OAKS ERP",
+                                "technology_used":"AngularJS , HTML, CSS, Bootstrap, jQuery"
+                            },
+                            {
+                                "name": "Tapow",
+                                "technology_used":"Angular, HTML5, CSS3, Bootstrap 4, Nodejs"
+                            }
+                        ]
 
-                if ($scope.data_length <=0){
-                    $scope.noRecord = true;
-                }
-                else{
-                    $scope.noRecord = false;
-                }
-
-                $scope.numberOfPages = function () {
-                    return Math.ceil($scope.data_length / $scope.pageSize);
-                }
-
-                var limitStep = 9;
-                $scope.limit = limitStep;
-                $scope.currentPage = currentPage;
-
-                $scope.incrementLimit = function () {
-                    $scope.limit += limitStep;
-                    $scope.currentPage += 1;
-                };
-
-                $scope.decrementLimit = function () {
-                    $scope.limit -= limitStep;
-                    $scope.currentPage -= 1;
-                }
-
-                $scope.search = function (item) {
-                    if ($scope.searchText == undefined) {
-                        return true;
-                    } else {
-                        if (
-                            item.movie_title.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 || item.country.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1 || item.language.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1
-                            || item.title_year.toLowerCase().indexOf($scope.searchText.toLowerCase()) != -1
-                        ) {
-                            return true;
-                        }
                     }
-                    return false;
-                }
+                ]
 
+                $scope.education= [
+                    {
+                        "name": "B.Tech (I.T)",
+                        "institute":"Shri Ramswaroop Memorial Group of Professional Colleges",
+                        "period": "2013-2017"
+                    },
+                    {
+                        "name": "Intermediate",
+                        "institute":"St. Anthony's Senior Secondary School",
+                        "period": "2009-2013"
+                    },
+                    {
+                        "name": "Student",
+                        "institute":"Kendriya Vidyalaya",
+                        "period": "As kid"
+                    }
+                ]
+
+                $scope.aboutMe = " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer and find myself crawling towards the beauties and aesthetics of the web. I also work extensively with iOS and Android using React Native. I feel like it's every         consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
                 
-
-            }
-        })
-        .catch(function (response) {
-            
-        });
-
-  
+              
+                $scope.year = (new Date()).getFullYear(); 
 }])
