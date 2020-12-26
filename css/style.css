@@ -228,7 +228,7 @@
 	    text-decoration: none;
 	}
 
-	@media only screen and (max-width: 768px) {
+	@media only screen and (max-width: 768px) and (min-width: 400px)  {
 		.heading-1-banner{
 			font-size: 20px;
 		}
