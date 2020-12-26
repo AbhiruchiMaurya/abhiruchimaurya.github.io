@@ -150,13 +150,13 @@
                                 </span>
                             </span>
                         </div>
-                        <div class="row" ng-repeat="k in m.project" style="border: 0px">
+                        <div class="row" ng-repeat="k in m.project" style="border: 0px" ng-style="{ 'border-bottom' : (($index+1) ==  m.project.length) ? '0px' : '1px solid #000000' }">
                             <div>
-                                <label>Project Name: </label>
-                                <span class="p-l-2 text-spacing">{{k.name}}</span>
+                                <label>Project Name : </label>
+                                <span class="p-l-2 text-spacing" style="font-weight: 600;">{{k.name}}</span>
                             </div>
                             <div style="margin-top: 5px;">
-                                <label>Technology Used: </label>
+                                <label>Technology Used : </label>
                                 <span ng-repeat="u in k.technology_used.split(',')">
                                     <span class="keywords p-l-2 text-spacing">
                                         {{u}}
@@ -185,8 +185,9 @@
                             <label>Institution : </label>
                             <span class="p-l-2 text-spacing">{{m.institute}}</span>
                         </div>
-                        <div class="row">
-                            <label>Period : </label><span class="p-l-2 text-spacing">{{m.period}}</span>
+                        <div class="row" ng-style="{ 'border-bottom' : '0px' }">
+                            <label>Period : </label>
+                            <span class="p-l-2 text-spacing">{{m.period}}</span>
                         </div>
                     </li>
                 </ul>

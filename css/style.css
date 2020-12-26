@@ -227,6 +227,16 @@
 	    outline: none;
 	    text-decoration: none;
 	}
+
+	@media only screen and (max-width: 768px) {
+		.heading-1-banner{
+			font-size: 20px;
+		}
+		.heading-2-banner{
+			font-size: 15px;
+		}
+	}
+
 	@media only screen and (min-width: 768px) {
 	    .cd-top {
 	        right: 20px;
@@ -239,15 +249,7 @@
 			font-size: 25px;
 		}
 	}
-
-	@media only screen and (max-width: 768px) {
-		.heading-1-banner{
-			font-size: 20px;
-		}
-		.heading-2-banner{
-			font-size: 15px;
-		}
-	}
+	
 	@media only screen and (min-width: 1024px) {
 	    .cd-top {
 	        height: 45px;
