@@ -5,12 +5,12 @@ app.controller('movieCtrl',  ['$scope', function ( $scope) {
                 $scope.movieList = [
                     { 
                         "designation":"Senior System Engineer",
-                        "company":"Infosys",
-                        "period": "2020-present",
+                        "company":"Infosys Limited",
+                        "period": "2020-Present",
                         "technology":"ReactJS, React Native",
                         "project":[
                             {
-                                "name": "Traceibility App",
+                                "name": "Traceability App",
                                 "technology_used":"React Native"
                             }
                         ]
