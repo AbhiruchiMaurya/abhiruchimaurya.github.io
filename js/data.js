@@ -1,0 +1,115 @@
+
+var app = angular.module('myList', []);
+app.controller('myCtrl',  ['$scope', function ( $scope) {
+   
+                $scope.experienceList = [
+                    { 
+                        "designation":"Senior System Engineer",
+                        "company":"Infosys Limited",
+                        "period": "2020-Present",
+                        "technology":"ReactJS, React Native",
+                        "project":[
+                            {
+                                "name": "Traceability App",
+                                "technology_used":"React Native"
+                            }
+                        ]
+                    },
+                    { 
+                        "designation":"Software Engineer",
+                        "company":"Iglulabs Pvt Ltd",
+                        "period": "2019-2020",
+                        "technology":"Angular , HTML5, CSS3, Bootstrap 4",
+                        "project":[
+                            {
+                                "name": "Alum-n-i Web App",
+                                "technology_used":"Angular, HTML5, CSS3, Bootstrap 4"
+                            },
+                            {
+                                "name": "Alum-n-i Dashboard",
+                                "technology_used":"Angular, HTML5, CSS3, Bootstrap 4"
+                            }
+                        ]
+                    },
+                    { 
+                        "designation":"Software Engineer",
+                        "company":"Sing Sys Software Pvt Ltd",
+                        "period": "2017-2019",
+                        "technology":"AngularJS , HTML, CSS, Bootstrap, jQuery",
+                        "project":[
+                            {
+                                "name": "OAKS ERP",
+                                "technology_used":"AngularJS , HTML, CSS, Bootstrap, jQuery"
+                            },
+                            {
+                                "name": "Tapow",
+                                "technology_used":"Angular, HTML5, CSS3, Bootstrap 4, Nodejs"
+                            }
+                        ]
+
+                    }
+                ]
+
+                $scope.volunteerList = [
+                    { 
+                        "designation":"Design Head",                       
+                        "description":"Design Head for Gantavya Times ( College Tech Magazine )"                       
+                    },
+                    { 
+                        "designation":"Coordinator",
+                        "description":"Worked as coordinator for Literati Cell ( College Literature Club ) in 3rd year of BTech."                        
+                    },
+                    { 
+                        "designation":"Developer",
+                        "description":"Worked as developer for Mix-Hub ( Startup ) in 3rd & 4rth year of BTech."                        
+                    },
+                    { 
+                        "designation":"Blood Donor",
+                        "description":"Blood donation camp organized by Dr.Ram Manohar Lohia Hospital."                        
+                    },
+                    { 
+                        "designation":"Poster Designer",
+                        "description":"Worked as poster designer for Literati Cell ( College Literature Club ), Euphony Club ( College Singing Club ), Informal Cell in 2nd & 3rd year of BTech."                         
+                    },
+                    { 
+                        "designation":"Designer",
+                        "description":"Volunteered as Designer for INDA – Indo Nepal Doctor’s Association for 2015 Nepal earthquake."                         
+                    },
+                    { 
+                        "designation":"Assistant-Coordinator",
+                        "description":"Worked as assistant coordinator for Literati Cell ( College Literature Club ) in 2nd year of BTech."                         
+                    },
+                    { 
+                        "designation":"Volunteer",
+                        "description":"Worked as assistant coordinator for Literati Cell ( College Literature Club )  in 1st year of BTech."                         
+                    },
+                    
+                   
+                ]
+
+                $scope.education= [
+                    {
+                        "name": "B.Tech (I.T)",
+                        "institute":"Shri Ramswaroop Memorial Group of Professional Colleges",
+                        "period": "2013-2017"
+                    },
+                    {
+                        "name": "Intermediate",
+                        "institute":"St. Anthony's Senior Secondary School",
+                        "period": "2009-2013"
+                    },
+                    {
+                        "name": "Student",
+                        "institute":"Kendriya Vidyalaya",
+                        "period": "As kid"
+                    }
+                ]
+
+                $scope.works = [ "Binge Watching Sitcoms & Anime", "Reading Books" ]
+                
+
+                $scope.aboutMe = " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer and find myself crawling towards the beauties and aesthetics of the web. I also worked with iOS and Android using React Native. I feel like it's every         consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
+                
+              
+                $scope.year = (new Date()).getFullYear(); 
+}])

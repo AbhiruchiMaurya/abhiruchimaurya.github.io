@@ -1,262 +1,373 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="movieList" ng-controller="movieCtrl">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<html lang="en" ng-app="myList" ng-controller="myCtrl">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="theme-color" content="#27303c" />
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <title>Abhiruchi Maurya</title>
     <!-- Favicon -->
     <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="img/favicon.ico" type="image/x-icon" />
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Dancing+Script" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Dancing+Script"
+      rel="stylesheet"
+    />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
     <!-- Animated CSS -->
     <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
     <!-- Site Custom CSS -->
     <link href="css/style.css" type="text/css" rel="stylesheet" media="all" />
     <!-- Site Custom Responsive CSS -->
-    <link href="css/responsive.css" type="text/css" rel="stylesheet" media="all" />
-</head>
+    <link
+      href="css/responsive.css"
+      type="text/css"
+      rel="stylesheet"
+      media="all"
+    />
+  </head>
 
-<body>
+  <body>
     <!-- Site Preloader -->
     <div id="preloader">
-        <div id="status">&nbsp;</div>
+      <div id="status">&nbsp;</div>
     </div>
     <!-- /.Site Preloader -->
     <main class="wrapper">
-        <!--  header section -->
-        <header class="header-section">
-            <div class="header-nav">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-2 col-sm-6 col-xs-6 brand-block">
-                            <span class="logo-heading">
-                                <h2>Abhiruchi</h2>
-                            </span>
-                        </div>
-                        <div class="col-md-7 col-sm-12 col-xs-12 navigation-block">
-                            <button type="button" class="collapse-switch">
-                                <span class="icon-line"></span>
-                                <span class="icon-line"></span>
-                                <span class="icon-line"></span>
-                            </button>
-                            <ul class="nav-links">
-                                <li>
-                                    <a href="#home">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#aboutMe">About Me</a>
-                                </li>
-                                <li>
-                                    <a href="#skillset">Skill</a>
-                                </li>
-                                <li>
-                                    <a href="#experience">Experience</a>
-                                </li>
-                                <li>
-                                    <a href="#education">Education</a>
-                                </li>
-                                <li>
-                                    <a href="#contact">Contact</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
-        <!--  /.header section -->
-        <!--  main section -->
-        <section class="hero-section" style="background-image:url(images/hero-banner.jpg);" id="home">
-            <div class="container custom-container">
-                <h2 class="heading-1-banner">HI, I'M ABHIRUCHI MAURYA</h2>
-                <p class="heading-2-banner">FRONTEND WEB Developer | React Native Developer</p>
-            </div>
-        </section>
-        <section id="aboutMe">
-            <div class="section-heading" style="padding:20px ;">
-                <h2 style="color: #330000;font-weight: 700;">ABOUT ME</h2>
-            </div>
+      <!--  header section -->
+      <header class="header-section">
+        <div class="header-nav">
+          <div class="container">
             <div class="row">
-                <div class="container">
-                    <div class="col-md-6">
-                        <div style="text-align: center;">
-                            <img src="images/profile-pic.jfif" alt="ProfilePhoto"
-                                style="width:400px; border: 10px solid #330000;border-radius: 50%;">
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div
-                            style="border-radius: 15px 50px; border-left: 5px solid #330000;border-right: 5px solid #330000;">
-                            <p style="font-size: 18px;line-height: 2;padding:20px;font-weight: 500;">
-                               {{aboutMe}}
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row" id="skillset">
-                <div class="container">
-                    <div class="row text-center">
-                        <h2 style="border-bottom: 7px double #330000; font-weight: 600;padding:10px;">Skillset 👩‍💻</h2>
-                    </div>
-                    <div class="skillset text-center">
-                        <img src="images/react-native.png">
-                        <img src="images/reactjs.png">
-                        <img src="images/angular.png">
-                        <img src="images/angularjs.png">
-                        <img src="images/ts.png">
-                        <img src="images/js.png">
-                        <img src="images/html5.png">
-                        <img src="images/css3.png">
-                        <img src="images/bootstrap.png">
-                        <img src="images/jquery.png">
-
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!--  /.main section -->
-        <!--  experience section -->
-        <section class="our-collections" id="experience">
-            <div class="container">
-                <div class="section-heading">
-                    <h2>EXPERIENCE 💼 </h2>
-                </div>
-                <ul class="collection-listings clearfix">
-                    <li ng-repeat="m in movieList">
-                        <div class="row">
-                            <h2>{{m.designation}}</h2>
-                        </div>
-                        <div class="row">
-                            <label>Company : </label>
-                            <span class="p-l-2 text-spacing">{{m.company}}</span>
-                        </div>
-                        <div class="row">
-                            <label>Period : </label>
-                            <span class="p-l-2 text-spacing">{{m.period}}</span>
-                        </div>
-                        <div class="row key-words">
-                            <label>Technology : </label>
-                            <span ng-repeat="k in m.technology.split(',')">
-                                <span class="keywords p-l-2 text-spacing">
-                                    {{k}}
-                                </span>
-                            </span>
-                        </div>
-                        <div class="row" ng-repeat="k in m.project" style="border: 0px" ng-style="{ 'border-bottom' : (($index+1) ==  m.project.length) ? '0px' : '1px solid #000000' }">
-                            <div>
-                                <label>Project Name : </label>
-                                <span class="p-l-2 text-spacing" style="font-weight: 600;">{{k.name}}</span>
-                            </div>
-                            <div style="margin-top: 5px;">
-                                <label>Technology Used : </label>
-                                <span ng-repeat="u in k.technology_used.split(',')">
-                                    <span class="keywords p-l-2 text-spacing">
-                                        {{u}}
-                                    </span>
-                                </span>
-                            </div>
-                        </div>
-                    </li>
+              <div class="col-md-2 col-sm-6 col-xs-6 brand-block">
+                <span class="logo-heading">
+                  <h2>Abhiruchi</h2>
+                </span>
+              </div>
+              <div class="col-md-7 col-sm-12 col-xs-12 navigation-block">
+                <button type="button" class="collapse-switch">
+                  <span class="icon-line"></span>
+                  <span class="icon-line"></span>
+                  <span class="icon-line"></span>
+                </button>
+                <ul class="nav-links">
+                  <li>
+                    <a href="#home">Home</a>
+                  </li>
+                  <li>
+                    <a href="#aboutMe">About Me</a>
+                  </li>
+                  <li>
+                    <a href="#skillset">Skill</a>
+                  </li>
+                  <li>
+                    <a href="#experience">Experience</a>
+                  </li>
+                  <li>
+                    <a href="#education">Education</a>
+                  </li>
+                  <li>
+                    <a href="#contact">Contact</a>
+                  </li>
                 </ul>
+              </div>
             </div>
-        </section>
-        <!--  ./experience section -->
-        <!--  education section -->
-        <section id="education">
-            <div class="container">
-                <div class="section-heading">
-                    <h2 style="color: #330000;font-weight: 700;">EDUCATION 🎓</h2>
-                </div>
-                <ul class="collection-listings">
-                    <li ng-repeat="m in education"
-                        style="border-left:8px solid #990000;background-color: #ffff4d;min-height:300px;">
-                        <div class="row">
-                            <h2>{{m.name}}</h2>
-                        </div>
-                        <div class="row">
-                            <label>Institution : </label>
-                            <span class="p-l-2 text-spacing">{{m.institute}}</span>
-                        </div>
-                        <div class="row" ng-style="{ 'border-bottom' : '0px' }">
-                            <label>Period : </label>
-                            <span class="p-l-2 text-spacing">{{m.period}}</span>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
-        <!--  /.education section -->
-
-        <!-- footer section -->
-        <footer class="footer-section" id="contact">
-            <div class="footer-links">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-heading">
-                            <h2>CONTACT 📞</h2>
-                        </div>
-                        <div class="text-center" style="margin-top: 30px;">
-                            <div class="col-md-4 col-sm-12 col-xs-12 contact-section">
-                                <p style="font-size: 18px;color: #ffffff;">
-                                    📌Location
-                                </p>
-                                <p style="font-size: 18px;color: #ffffb3;">
-                                    Bangalore, India
-                                </p>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12 contact-section"
-                                style="border-right:5px dashed #ffff4d;border-left:5px dashed #ffff4d;">
-                                <p style="font-size: 18px;color: #ffffff;">
-                                    Feel free to get in touch!
-                                </p>
-                                <p style="font-size: 18px;color: #ffffb3; padding:10px;border:2px solid #ffff4d">
-                                    <span class="glyphicon glyphicon-envelope" style="margin-right: 10px;"></span>
-                                    abhiruchimaurya@outlook.com
-                                </p>
-                            </div>
-                            <div class="col-md-4 col-sm-12 col-xs-12">
-                                <div class="footer-social-links">
-                                    <h6>I am social ! Stay connected</h6>
-                                    <ul class="social-links">
-                                        <li>
-                                            <a href="https://twitter.com/abhiruchi1017">
-                                                <img src="images/twitter.png" alt="twitter" title="Twitter" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://github.com/AbhiruchiMaurya">
-                                                <img src="images/github.png" alt="facebook" title="GitHub" />
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="https://www.linkedin.com/in/abhiruchi-maurya-365b5377/">
-                                                <img src="images/linkedin.png" alt="linkedin" title="Linkedin" />
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <div class="code-block" style="background-color: #330000;">
-            <div class="container text-center">
-                <p class="copy-right">
-                    Copyright &copy; {{year}} Abhiruchi Maurya with ❤️
-                </p>
-            </div>
+          </div>
         </div>
-        <!-- /.footer section -->
+      </header>
+      <!--  /.header section -->
+      <!--  main section -->
+      <section
+        class="hero-section"
+        style="background-image: url(images/hero-banner.jpg)"
+        id="home"
+      >
+        <div class="container custom-container">
+          <h2 class="heading-1-banner">HI, I'M ABHIRUCHI MAURYA</h2>
+          <p class="heading-2-banner">
+            FRONTEND WEB Developer | React Native Developer
+          </p>
+        </div>
+      </section>
+      <!-- About ME -->
+      <section id="aboutMe" class="background-white-section">
+        <div class="section-heading" style="padding: 20px">
+          <h2 class="cherryHeader">ABOUT ME</h2>
+        </div>
+        <div class="row">
+          <div class="container">
+            <div class="col-md-6">
+              <div style="text-align: center">
+                <img
+                  src="images/profile-pic.jfif"
+                  alt="ProfilePhoto"
+                  style="
+                    width: 400px;
+                    border: 10px solid #330000;
+                    border-radius: 50%;
+                  "
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div
+                style="
+                  border-radius: 15px 50px;
+                  border-left: 5px solid #330000;
+                  border-right: 5px solid #330000;
+                "
+              >
+                <p
+                  style="
+                    font-size: 18px;
+                    line-height: 2;
+                    padding: 20px;
+                    font-weight: 500;
+                  "
+                >
+                  {{aboutMe}}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Skill Set Section -->
+        <div class="row" id="skillset">
+          <div class="container">
+            <div class="row text-center">
+              <h2
+                style="
+                  border-bottom: 7px double #330000;
+                  font-weight: 600;
+                  padding: 10px;
+                "
+              >
+                Skillset 👩‍💻
+              </h2>
+            </div>
+            <div class="skillset text-center">
+              <img src="images/vuejs.JPG" />
+              <img src="images/react-native.png" />
+              <img src="images/reactjs.png" />
+              <img src="images/angular.png" />
+              <img src="images/angularjs.png" />
+              <img src="images/ts.png" />
+              <img src="images/js.png" />
+              <img src="images/html5.png" />
+              <img src="images/css3.png" />
+              <img src="images/bootstrap.png" />
+              <img src="images/jquery.png" />
+            </div>
+          </div>
+        </div>
+      </section>
+      <!--  /.main section -->
+      <!--  experience section -->
+      <section class="our-collections" id="experience">
+        <div class="container">
+          <div class="section-heading">
+            <h2>EXPERIENCE 💼</h2>
+          </div>
+          <ul class="collection-listings clearfix">
+            <li ng-repeat="m in experienceList">
+              <div class="row">
+                <h2>{{m.designation}}</h2>
+              </div>
+              <div class="row">
+                <label>Company : </label>
+                <span class="p-l-2 text-spacing">{{m.company}}</span>
+              </div>
+              <div class="row">
+                <label>Period : </label>
+                <span class="p-l-2 text-spacing">{{m.period}}</span>
+              </div>
+              <div class="row key-words">
+                <label>Technology : </label>
+                <span ng-repeat="k in m.technology.split(',')">
+                  <span class="keywords p-l-2 text-spacing"> {{k}} </span>
+                </span>
+              </div>
+              <div
+                class="row"
+                ng-repeat="k in m.project"
+                style="border: 0px"
+                ng-style="{ 'border-bottom' : (($index+1) ==  m.project.length) ? '0px' : '1px solid #000000' }"
+              >
+                <div>
+                  <label>Project Name : </label>
+                  <span class="p-l-2 text-spacing" style="font-weight: 600"
+                    >{{k.name}}</span
+                  >
+                </div>
+                <div style="margin-top: 5px">
+                  <label>Technology Used : </label>
+                  <span ng-repeat="u in k.technology_used.split(',')">
+                    <span class="keywords p-l-2 text-spacing"> {{u}} </span>
+                  </span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!--  ./experience section -->
+      <!-- Volunteer Experience -->
+      <section class="our-collections background-white-section" id="volunteer">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="cherryHeader text-center">VOLUNTEER EXPERIENCE 😇</h2>
+          </div>
+          <ul class="vol-card clearfix">
+            <li ng-repeat="m in volunteerList" class="text-center">
+              <div class="row borderBtm">
+                <h2>{{m.designation}}</h2>
+              </div>
+              <div class="row">
+                <p class="description">{{m.description}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!--  ./Volunteer Experience -->
+      <!--  education section -->
+      <section id="education">
+        <div class="container">
+          <div class="section-heading">
+            <h2>EDUCATION 🎓</h2>
+          </div>
+          <ul class="collection-listings">
+            <li ng-repeat="m in education">
+              <div class="row">
+                <h2>{{m.name}}</h2>
+              </div>
+              <div class="row">
+                <label>Institution : </label>
+                <span class="p-l-2 text-spacing">{{m.institute}}</span>
+              </div>
+              <div class="row" ng-style="{ 'border-bottom' : '0px' }">
+                <label>Period : </label>
+                <span class="p-l-2 text-spacing">{{m.period}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!--  /.education section -->
+
+      <!--  hobby section -->
+      <!-- <section id="hobby" class="background-white-section">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="cherryHeader">Projects 🎓</h2>
+          </div>
+          <ul class="collection-listings">
+            <li ng-repeat="m in hobby">
+              <div class="description">
+                <p style="color: #ffffff;">{{m}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section> -->
+      <!--  /.hobby section -->
+
+      <!-- footer section -->
+      <footer class="footer-section" id="contact">
+        <div class="footer-links">
+          <div class="container">
+            <div class="row">
+              <div class="section-heading">
+                <h2>CONTACT 📞</h2>
+              </div>
+              <div class="text-center" style="margin-top: 30px">
+                <div class="col-md-4 col-sm-12 col-xs-12 contact-section">
+                  <p style="font-size: 18px; color: #ffffff">📌Location</p>
+                  <p style="font-size: 18px; color: #ffffb3">
+                    Bangalore, India
+                  </p>
+                </div>
+                <div
+                  class="col-md-4 col-sm-12 col-xs-12 contact-section"
+                  style="
+                    border-right: 5px dashed #ffff4d;
+                    border-left: 5px dashed #ffff4d;
+                  "
+                >
+                  <p style="font-size: 18px; color: #ffffff">
+                    Feel free to get in touch!
+                  </p>
+                  <p
+                    style="
+                      font-size: 18px;
+                      color: #ffffb3;
+                      padding: 10px;
+                      border: 2px solid #ffff4d;
+                    "
+                  >
+                    <span
+                      class="glyphicon glyphicon-envelope"
+                      style="margin-right: 10px"
+                    ></span>
+                    abhiruchimaurya@outlook.com
+                  </p>
+                </div>
+                <div class="col-md-4 col-sm-12 col-xs-12">
+                  <div class="footer-social-links">
+                    <h6>I am social ! Stay connected</h6>
+                    <ul class="social-links">
+                      <li>
+                        <a href="https://twitter.com/abhiruchi1017">
+                          <img
+                            src="images/twitter.png"
+                            alt="twitter"
+                            title="Twitter"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://github.com/AbhiruchiMaurya">
+                          <img
+                            src="images/github.png"
+                            alt="facebook"
+                            title="GitHub"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.linkedin.com/in/abhiruchi-maurya-365b5377/"
+                        >
+                          <img
+                            src="images/linkedin.png"
+                            alt="linkedin"
+                            title="Linkedin"
+                          />
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <div class="code-block" style="background-color: #330000">
+        <div class="container text-center">
+          <p class="copy-right">
+            Copyright &copy; {{year}} Abhiruchi Maurya with ❤️
+          </p>
+        </div>
+      </div>
+      <!-- /.footer section -->
     </main>
     <!-- jQuery Library -->
     <script src="js/jquery.min.js"></script>
@@ -264,17 +375,10 @@
     <script src="js/bootstrap.min.js"></script>
     <!-- AngularJS Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="js/movieCtrl.js"></script>
-    <!-- Wow Animation jQ/JS -->
-    <script src="js/wow.min.js" type="text/javascript"></script>
-    <!-- mousewheel jQ/JS -->
-    <script src="js/jquery.mousewheel.js" type="text/javascript"></script>
-    <!-- nicescroll jQ/JS -->
-    <script src="js/jquery.nicescroll.min.js" type="text/javascript"></script>
+    <script src="js/data.js"></script>
     <!-- transition jQ/JS -->
     <script src="js/transition.js" type="text/javascript"></script>
     <!-- Site Custom jQ/JS -->
     <script src="js/custom.js" type="text/javascript"></script>
-</body>
-
+  </body>
 </html>
