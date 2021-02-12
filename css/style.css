@@ -1,7 +1,7 @@
 /* CSS - TOOLS */
 
 	section      									{ overflow: hidden }
-	html, body 							 			{ background: #330000; -webkit-text-size-adjust: none; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; position: relative;scroll-behavior: smooth;}
+	html, body 							 			{ background: #330000; -webkit-text-size-adjust: none; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; position: relative;scroll-behavior: smooth;cursor:context-menu;}
 	input, button, textarea, select, label			{ resize: none}	
 	*, 
 	*:after, 
