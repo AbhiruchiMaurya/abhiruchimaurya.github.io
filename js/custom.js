@@ -44,9 +44,3 @@ $(window).on("load scroll resize", function () {
     $(".header-section").removeClass("menu-fixed");
   }
 });
-
-var text = "Widget World";
-
-var textElements = text.split("").map(function (c) {
-  return $('<span id="' + c + '">' + c + "</span>");
-});
