@@ -100,7 +100,7 @@ app.controller('myCtrl',  ['$scope', function ( $scope) {
                     },
                     {
                         "name": "Student",
-                        "institute":"Kendriya Vidyalaya",
+                        "institute":"Kendriya Vidyalaya, Army School",
                         "period": "As kid"
                     }
                 ]

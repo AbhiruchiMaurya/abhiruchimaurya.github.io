@@ -217,7 +217,7 @@
 			font-size: 50px !important;
 		}
 		.heading-2-banner{
-			font-size: 15px !important;
+			font-size: 15px !important;			
 		}
 	}
 
@@ -229,7 +229,7 @@
 		line-height: 80px;
 		color: #fff5e6;
 	    padding-bottom: 25px;
-	}
+	} 
 
 	.heading-2-banner{
 		font-size: 23px;
@@ -242,6 +242,7 @@
 	    color: #fff5e6;
 	    font-weight: 400;
 	    text-transform:  uppercase;
+		text-decoration: underline !important;
 	}
 
 	.navigation-block,.cart-block {
@@ -385,8 +386,10 @@
 	    width: 30.33%;
 	    float: left;
 		text-align: left;
-		background-color:#ffe6e6; 
-		border:2px #ffdf80 solid;
+		background-color:#ffcccc; 
+		border-top:8px #990000 solid;
+		border-bottom-right-radius: 30px;
+		border-bottom-left-radius: 30px;
 		margin:10px;
 		min-height:450px;
 		box-shadow: 10px 14px 18px 0px rgba(0,0,0,0.2);
@@ -394,17 +397,7 @@
 	}
 
 	#education .collection-listings li {
-		border-left: 8px solid #990000;
-		background-color: #ffff4d;
-		min-height: 300px;
-	}
-
-	#hobby .collection-listings li {
-		background-color:#4d0000; 
-		border-left:6px #990000 solid;
-		border-top-right-radius: 30px;
-		border-bottom-right-radius: 30px;
-		min-height:auto;
+		min-height: 300px;	
 	}
 
 	.collection-listings li div.row{
@@ -412,11 +405,13 @@
 		padding: 10px 0px;
 	} 
 	.collection-listings li span.keywords{
-		background-color: #b38600;
-		border: 0px black solid;
+		background-color: #ff6666;
 		border-radius: 5px;
-		padding:0px 5px;
+		padding:1px 5px;
 		margin-right: 5px;
+		font-weight: 500;
+		font-style: italic;
+
 	}
 	.collection-listings li span.genres{
 		background-color: #b36b00;
@@ -523,9 +518,10 @@
 	.skillset img{
 		width: 150px;
 		height: 150px; 
-		border: 4px dotted #000000;
+		border: 4px dotted black;
 		padding:5px;
 		margin: 10px;
+		background-color: #ffffff;
 	}
 
 	.social-links li {
