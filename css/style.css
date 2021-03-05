@@ -535,7 +535,6 @@ section {
 .flip-card {
   background-color: transparent;
   margin: 10px;
-  width: 400px;
   height: 130px;
   perspective: 1000px;
 }
@@ -850,31 +849,4 @@ section {
 
 .timeline-listing div.row:last-child {
   padding: 10px 10px;
-}
-
-/* Media queries - Responsive timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
-  /* Full-width containers */
-  .content-timeline {
-    width: 100%;
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-
-  .timeline-listing {
-    width: 100%;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .timeline-listing {
-    width: 80%;
-  }
-
-  .content-timeline::before,
-  .timeline-listing::after,
-  .timeline-listing::before,
-  .timeline::after {
-    display: none;
-  }
 }
