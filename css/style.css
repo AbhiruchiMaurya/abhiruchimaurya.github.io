@@ -639,14 +639,13 @@ section {
   background-image: linear-gradient(#cc0000, #cc0000),
     linear-gradient(#660000, #660000), linear-gradient(#d53e33, #d53e33),
     linear-gradient(#ffcccc, #ffcccc);
-  animation: rotate 5s linear infinite;
+  animation: rotate 80s linear infinite;
 }
 
 .rainbow:nth-child(odd)::before {
   background-image: linear-gradient(#cc0000, #cc0000),
     linear-gradient(#ffff33, #ffff33), linear-gradient(#d53e33, #d53e33),
     linear-gradient(#ffcccc, #ffcccc);
-  animation: rotate 2s linear infinite;
 }
 .rainbow::after {
   content: "";
