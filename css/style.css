@@ -602,10 +602,62 @@ section {
 .skillset img {
   width: 150px;
   height: 150px;
-  border: 4px dotted black;
   padding: 5px;
   margin: 10px;
-  background-color: #ffffff;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(1turn);
+  }
+}
+
+.rainbow {
+  position: relative;
+  display: inline-block;
+  z-index: 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 2rem;
+  margin: 10px;
+}
+
+.rainbow::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  left: -50%;
+  top: -50%;
+  width: 200%;
+  height: 200%;
+  background-color: #ff4d4d;
+  background-repeat: no-repeat;
+  background-size: 50% 50%, 50% 50%;
+  background-position: 0 0, 100% 0, 100% 100%, 0 100%;
+  background-image: linear-gradient(#cc0000, #cc0000),
+    linear-gradient(#660000, #660000), linear-gradient(#d53e33, #d53e33),
+    linear-gradient(#ffcccc, #ffcccc);
+  animation: rotate 5s linear infinite;
+}
+
+.rainbow:nth-child(odd)::before {
+  background-image: linear-gradient(#cc0000, #cc0000),
+    linear-gradient(#ffff33, #ffff33), linear-gradient(#d53e33, #d53e33),
+    linear-gradient(#ffcccc, #ffcccc);
+  animation: rotate 2s linear infinite;
+}
+.rainbow::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 6px;
+  top: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  background: white;
+  border-radius: 5px;
 }
 
 .social-links li {
@@ -675,5 +727,134 @@ section {
 
   100% {
     opacity: 1;
+  }
+}
+
+/* TIMELINE */
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  background-color: #990000;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+}
+
+/* Container around content */
+.timeline-listing {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.timeline-listing::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  background-color: white;
+  border: 4px solid #990000;
+  top: 15px;
+  left: 2px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the right */
+.right {
+  left: 9%;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 17px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent #990000 transparent transparent;
+}
+
+/* The actual content */
+.content-timeline {
+  padding: 10px 30px;
+  background-color: #ffcccc;
+  position: relative;
+  border-radius: 6px;
+  border: 2px solid #990000;
+}
+
+.content-timeline span.keywords {
+  background-color: #ff6666;
+  border-radius: 5px;
+  padding: 1px 5px;
+  margin-right: 5px;
+  font-weight: 500;
+  font-style: italic;
+}
+.content-timeline span.genres {
+  background-color: #b36b00;
+  border: 0px black solid;
+  border-radius: 5px;
+  padding: 0px 5px;
+  margin-right: 5px;
+}
+.content-timeline div.key-words {
+  border-bottom: 1px black solid;
+}
+
+.content-timeline a:hover {
+  text-decoration: underline;
+}
+
+.timeline-listing div.row:not(:last-child) {
+  border-bottom: 1px black solid;
+  padding: 10px 10px;
+}
+
+.timeline-listing div.row:last-child {
+  padding: 10px 10px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+  /* Full-width containers */
+  .content-timeline {
+    width: 100%;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .timeline-listing {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .timeline-listing {
+    width: 80%;
+  }
+
+  .content-timeline::before,
+  .timeline-listing::after,
+  .timeline-listing::before,
+  .timeline::after {
+    display: none;
   }
 }

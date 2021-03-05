@@ -147,17 +147,17 @@
             <h2 class="whiteHeader text-center">SKILLSET 👩‍💻</h2>
           </div>
           <div class="skillset text-center">
-            <img src="images/vuejs.JPG" />
-            <img src="images/react-native.png" />
-            <img src="images/reactjs.png" />
-            <img src="images/angular.png" />
-            <img src="images/angularjs.png" />
-            <img src="images/ts.png" />
-            <img src="images/js.png" />
-            <img src="images/html5.png" />
-            <img src="images/css3.png" />
-            <img src="images/bootstrap.png" />
-            <img src="images/jquery.png" />
+            <div class="rainbow"><img src="images/vuejs.JPG" /></div>           
+             <div class="rainbow"><img src="images/react-native.png" /></div>
+             <div class="rainbow"><img src="images/reactjs.png" /></div>
+             <div class="rainbow"><img src="images/angular.png" /></div>
+             <div class="rainbow"><img src="images/angularjs.png" /></div>
+             <div class="rainbow"><img src="images/ts.png" /></div>
+             <div class="rainbow"><img src="images/js.png" /></div>
+             <div class="rainbow"><img src="images/html5.png" /></div>
+             <div class="rainbow"><img src="images/css3.png" /></div>
+             <div class="rainbow"><img src="images/bootstrap.png" /></div>
+             <div class="rainbow"><img src="images/jquery.png" /></div>
           </div>
         </div>
       </section>
@@ -168,12 +168,14 @@
           <div class="section-heading">
             <h2 class="cherryHeader text-center">EXPERIENCE 💼</h2>
           </div>
-          <ul class="collection-listings clearfix">
-            <li ng-repeat="m in experienceList">
+          <div class="timeline">
+            <div
+              class="timeline-listing right"
+              ng-repeat="m in experienceList"
+            >
+              <div class="content-timeline">
               <div class="row">
-                <h2>{{m.designation}}</h2>
-              </div>
-              <div class="row">
+                <h2>{{m.designation}}</h2>              
                 <label>Company : </label>
                 <span class="p-l-2 text-spacing">{{m.company}}</span>
               </div>
@@ -190,12 +192,15 @@
               <div
                 class="row"
                 ng-repeat="k in m.project"
-                style="border: 0px"
-                ng-style="{ 'border-bottom' : (($index+1) ==  m.project.length) ? '0px' : '1px solid #000000' }"
               >
                 <div>
                   <label>Project Name : </label>
+                   <a href="{{k.link}}" target="_blank" ng-if="k.link"
                   <span class="p-l-2 text-spacing" style="font-weight: 600"
+                    >{{k.name}}</span
+                  >
+                </a>
+                  <span class="p-l-2 text-spacing" style="font-weight: 600" ng-if="!k.link"
                     >{{k.name}}</span
                   >
                 </div>
@@ -206,8 +211,9 @@
                   </span>
                 </div>
               </div>
-            </li>
-          </ul>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <!--  ./experience section -->
@@ -244,7 +250,9 @@
               </div>
               <div class="row">
                 <label>Institution : </label>
-                <span class="p-l-2 text-spacing">{{m.institute}}</span>
+                <a href="{{m.link}}" target="_blank"
+                  ><span class="p-l-2 text-spacing">{{m.institute}}</span></a
+                >
               </div>
               <div class="row" ng-style="{ 'border-bottom' : '0px' }">
                 <label>Period : </label>
@@ -293,7 +301,7 @@
                       class="glyphicon glyphicon-envelope"
                       style="margin-right: 10px"
                     ></span>
-                    abhiruchimaurya@outlook.com
+                    abhiruchimaurya10@gmail.com
                   </p>
                 </div>
                 <div class="col-md-4 col-sm-12 col-xs-12">
