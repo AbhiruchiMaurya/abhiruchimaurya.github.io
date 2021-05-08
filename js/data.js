@@ -4,15 +4,19 @@ app.controller("myCtrl", [
   function ($scope) {
     $scope.experienceList = [
       {
-        designation: "Senior System Engineer",
+        designation: "Senior Systems Engineer",
         company: "Infosys Limited",
         period: "2020-Present",
-        technology: "ReactJS, React Native",
+        technology: "VueJS, ReactJS, React Native",
         project: [
           {
             name: "Traceability App",
             technology_used: "React Native",
             // link: "https://androidappsapk.co/detail-circorsmart/",
+          },
+          {
+            name: "Vue JS Web App",
+            technology_used: "VueJS",
           },
         ],
       },
@@ -118,7 +122,7 @@ app.controller("myCtrl", [
     $scope.works = ["Binge Watching Sitcoms & Anime", "Reading Books"];
 
     $scope.aboutMe =
-      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer and find myself crawling towards the beauties and aesthetics of the web. I also worked with iOS and Android using React Native. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
+      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 3 years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
 
     $scope.year = new Date().getFullYear();
   },

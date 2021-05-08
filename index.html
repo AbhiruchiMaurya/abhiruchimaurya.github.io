@@ -167,53 +167,48 @@
         <div class="container">
           <div class="section-heading">
             <h2 class="cherryHeader text-center">EXPERIENCE 💼</h2>
-          </div>
-          <div class="timeline">
+          </div>         
+        <div class="experience" ng-repeat="m in experienceList">
+        
+            <div class="row">
+              <h4>{{m.designation}}</h4>              
+              <label>Company : </label>
+              <span class="p-l-2 text-spacing">{{m.company}}</span>
+            </div>
+            <div class="row">
+              <label>Period : </label>
+              <span class="p-l-2 text-spacing period">{{m.period}}</span>
+            </div>
+            <div class="row key-words">
+              <label>Technology : </label>
+              <span ng-repeat="k in m.technology.split(',')">
+                <span class="keywords p-l-2 text-spacing"> {{k}} </span>
+              </span>
+            </div>
             <div
-              class="timeline-listing right"
-              ng-repeat="m in experienceList"
+              class="row project-name"
+              ng-repeat="k in m.project"
             >
-              <div class="content-timeline">
-              <div class="row">
-                <h2>{{m.designation}}</h2>              
-                <label>Company : </label>
-                <span class="p-l-2 text-spacing">{{m.company}}</span>
+              <div>
+                <label>Project Name : </label>
+                 <a href="{{k.link}}" target="_blank" ng-if="k.link"
+                <span class="p-l-2 text-spacing" style="font-weight: 600"
+                  >{{k.name}}</span
+                >
+              </a>
+                <span class="p-l-2 text-spacing" style="font-weight: 600" ng-if="!k.link"
+                  >{{k.name}}</span
+                >
               </div>
-              <div class="row">
-                <label>Period : </label>
-                <span class="p-l-2 text-spacing">{{m.period}}</span>
-              </div>
-              <div class="row key-words">
-                <label>Technology : </label>
-                <span ng-repeat="k in m.technology.split(',')">
-                  <span class="keywords p-l-2 text-spacing"> {{k}} </span>
+              <div style="margin-top: 5px">
+                <label>Technology Used : </label>
+                <span ng-repeat="u in k.technology_used.split(',')">
+                  <span class="keywords p-l-2 text-spacing"> {{u}} </span>
                 </span>
               </div>
-              <div
-                class="row"
-                ng-repeat="k in m.project"
-              >
-                <div>
-                  <label>Project Name : </label>
-                   <a href="{{k.link}}" target="_blank" ng-if="k.link"
-                  <span class="p-l-2 text-spacing" style="font-weight: 600"
-                    >{{k.name}}</span
-                  >
-                </a>
-                  <span class="p-l-2 text-spacing" style="font-weight: 600" ng-if="!k.link"
-                    >{{k.name}}</span
-                  >
-                </div>
-                <div style="margin-top: 5px">
-                  <label>Technology Used : </label>
-                  <span ng-repeat="u in k.technology_used.split(',')">
-                    <span class="keywords p-l-2 text-spacing"> {{u}} </span>
-                  </span>
-                </div>
-              </div>
-              </div>
+          
             </div>
-          </div>
+        </div>
         </div>
       </section>
       <!--  ./experience section -->
