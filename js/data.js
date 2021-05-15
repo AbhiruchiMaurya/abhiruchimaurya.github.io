@@ -15,9 +15,13 @@ app.controller("myCtrl", [
             // link: "https://androidappsapk.co/detail-circorsmart/",
           },
           {
-            name: "Vue JS Web App",
-            technology_used: "VueJS",
+            name: "Vue JS Web App - Proj 1",
+            technology_used: "VueJS, Jest"
           },
+          {
+            name: "Vue JS Web App - Proj 2",
+            technology_used: "VueJS, Jest"
+          }
         ],
       },
       {

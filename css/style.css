@@ -784,6 +784,10 @@ section {
   font-style: italic;
 }
 
+.project-name:last-child{
+  border-width: 0px;
+}
+
 .experience .period
 {
   background-color: #ff9980;
