@@ -4,7 +4,7 @@ app.controller("myCtrl", [
   function ($scope) {
     $scope.experienceList = [
       {
-        designation: "Senior Systems Engineer",
+        designation: "Technology Analyst",
         company: "Infosys Limited",
         period: "2020-Present",
         technology: "VueJS, ReactJS, React Native",
