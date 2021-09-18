@@ -126,7 +126,7 @@ app.controller("myCtrl", [
     $scope.works = ["Binge Watching Sitcoms & Anime", "Reading Books"];
 
     $scope.aboutMe =
-      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 3.5 years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
+      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 4 years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
 
     $scope.year = new Date().getFullYear();
   },
