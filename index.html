@@ -153,21 +153,23 @@
             <h2 class="whiteHeader text-center">SKILLSET</h2>
           </div>
           <div class="skillset text-center">
-            <div class="rainbow"><img src="images/vuejs.JPG" /></div> 
-            <div class="rainbow"><img src="images/jest.png" /></div>  
-            <div class="rainbow"><img src="images/vuetify.png" /></div>          
-             <div class="rainbow"><img src="images/react-native.png" /></div>
-             <div class="rainbow"><img src="images/reactjs.png" /></div>
-             <div class="rainbow"><img src="images/angular.png" /></div>
-             <div class="rainbow"><img src="images/angularjs.png" /></div>             
-             <div class="rainbow"><img src="images/ts.png" /></div>
-             <div class="rainbow"><img src="images/js.png" /></div>            
-             <div class="rainbow"><img src="images/bootstrap.png" /></div>
-             <div class="rainbow"><img src="images/jquery.png" /></div>
-             <div class="rainbow"><img src="images/website-accessibility.jpg" /></div>
-             <div class="rainbow"><img src="images/html5.png" /></div>
-             <div class="rainbow"><img src="images/css3.png" /></div>
-             <div class="rainbow"><img src="images/git.jpg" /></div>
+            <div class="rainbow"><img src="images/vuejs.JPG" /></div>
+            <div class="rainbow"><img src="images/jest.png" /></div>
+            <div class="rainbow"><img src="images/vuetify.png" /></div>
+            <div class="rainbow"><img src="images/react-native.png" /></div>
+            <div class="rainbow"><img src="images/reactjs.png" /></div>
+            <div class="rainbow"><img src="images/angular.png" /></div>
+            <div class="rainbow"><img src="images/angularjs.png" /></div>
+            <div class="rainbow"><img src="images/ts.png" /></div>
+            <div class="rainbow"><img src="images/js.png" /></div>
+            <div class="rainbow"><img src="images/bootstrap.png" /></div>
+            <div class="rainbow"><img src="images/jquery.png" /></div>
+            <div class="rainbow">
+              <img src="images/website-accessibility.jpg" />
+            </div>
+            <div class="rainbow"><img src="images/html5.png" /></div>
+            <div class="rainbow"><img src="images/css3.png" /></div>
+            <div class="rainbow"><img src="images/git.jpg" /></div>
           </div>
         </div>
       </section>
@@ -177,11 +179,10 @@
         <div class="container">
           <div class="section-heading">
             <h2 class="cherryHeader text-center">EXPERIENCE</h2>
-          </div>  
-        <div class="experience" ng-repeat="m in experienceList">
-        
+          </div>
+          <div class="experience" ng-repeat="m in experienceList">
             <div class="row">
-              <h4>{{m.designation}}</h4>              
+              <h4>{{m.designation}}</h4>
               <label>Company : </label>
               <span class="p-l-2 text-spacing">{{m.company}}</span>
             </div>
@@ -195,18 +196,18 @@
                 <span class="keywords p-l-2 text-spacing"> {{k}} </span>
               </span>
             </div>
-            <div
-              class="row project-name"
-              ng-repeat="k in m.project"
-            >
+            <div class="row project-name" ng-repeat="k in m.project">
               <div>
                 <label>Project Name : </label>
-                 <a href="{{k.link}}" target="_blank" ng-if="k.link">
-                <span class="p-l-2 text-spacing" style="font-weight: 600"
-                  >{{k.name}}</span
-                >
-              </a>
-                <span class="p-l-2 text-spacing" style="font-weight: 600" ng-if="!k.link"
+                <a href="{{k.link}}" target="_blank" ng-if="k.link">
+                  <span class="p-l-2 text-spacing" style="font-weight: 600"
+                    >{{k.name}}</span
+                  >
+                </a>
+                <span
+                  class="p-l-2 text-spacing"
+                  style="font-weight: 600"
+                  ng-if="!k.link"
                   >{{k.name}}</span
                 >
               </div>
@@ -216,9 +217,8 @@
                   <span class="keywords p-l-2 text-spacing"> {{u}} </span>
                 </span>
               </div>
-          
             </div>
-        </div> 
+          </div>
         </div>
       </section>
       <!--  ./experience section -->
@@ -229,20 +229,23 @@
             <h2 class="whiteHeader text-center">VOLUNTEER EXPERIENCE</h2>
           </div>
           <ul class="row">
-            <li ng-repeat="m in volunteerList" class="text-center col-md-4 col-sm-11 col-xs-11">
-              <div class="flip-card ">
+            <li
+              ng-repeat="m in volunteerList"
+              class="text-center col-md-4 col-sm-11 col-xs-11"
+            >
+              <div class="flip-card">
                 <div class="flip-card-inner">
                   <div class="flip-card-front">
-                    <h2>{{m.designation}}</h2>   
+                    <h2>{{m.designation}}</h2>
                   </div>
                   <div class="flip-card-back">
-                    <p>{{m.description}}</p>                   
+                    <p>{{m.description}}</p>
                   </div>
                 </div>
               </div>
             </li>
           </ul>
-        </div>       
+        </div>
       </section>
 
       <!--  ./Volunteer Experience -->
@@ -275,27 +278,27 @@
 
       <!--  Alumna section -->
       <section id="alumna">
-      <div class="container">
-        <div class="section-heading">
-          <h2 class="whiteHeader text-center">ALUMNA</h2>
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="whiteHeader text-center">ALUMNA</h2>
+          </div>
+          <ul class="alumna-listings">
+            <li ng-repeat="m in alumna">
+              <div class="row">
+                <h2>{{m.name}}</h2>
+              </div>
+              <div class="row">
+                <label>Institution : </label>
+                <a href="{{m.link}}" target="_blank"
+                  ><span class="p-l-2 text-spacing">{{m.institute}}</span></a
+                >
+              </div>
+              <div class="row" ng-style="{ 'border-bottom' : '0px' }">
+                <div class="alumna-img"><img src="{{m.src}}" /></div>
+              </div>
+            </li>
+          </ul>
         </div>
-        <ul class="alumna-listings">
-          <li ng-repeat="m in alumna">
-            <div class="row">
-              <h2>{{m.name}}</h2>
-            </div>
-            <div class="row">
-              <label>Institution : </label>
-              <a href="{{m.link}}" target="_blank"
-                ><span class="p-l-2 text-spacing">{{m.institute}}</span></a
-              >
-            </div>
-            <div class="row" ng-style="{ 'border-bottom' : '0px' }">
-              <div class="alumna-img"><img src="{{m.src}}" /></div> 
-            </div>
-          </li>
-        </ul>
-      </div>
       </section>
       <!--  /.Alumnasection -->
 
@@ -303,9 +306,11 @@
       <section id="hobby" class="background-white-section">
         <div class="container">
           <div class="section-heading">
-            <h2 class="cherryHeader text-center">HOBBIES & INTERESTS</h2>
+            <h2 class="cherryHeader text-center">
+              HOBBIES | INTERESTS | SOCIAL
+            </h2>
           </div>
-          <div style="text-align: center;">            
+          <div style="text-align: center;">
             <img
               src="images/bike.jpg"
               alt="ProfilePhoto"
@@ -315,23 +320,26 @@
                 border-radius: 50%;
               "
             />
-            <img
-              src="images/quote.jpeg"
-              alt="ProfilePhoto"
-              style="
-                margin-left: 20px;
-                width: 600px;
-                box-shadow: 10px 14px 18px 12px rgba(0, 0, 0, 0.2);
-                margin-top: 20px;
-              "
-            />
+              <img
+                src="images/quote.jpeg"
+                alt="Don't give up on kindness just because the world is doing so."
+                style="
+                  width: 600px;
+                  box-shadow: 10px 14px 18px 12px rgba(0, 0, 0, 0.2);
+                  margin-top: 20px;
+                  margin-left: 20px;
+                "
+              />
           </div>
           <ul class="hobby-listings">
             <li ng-repeat="m in hobbies">
               <div class="row">
                 <h2>{{m.name}}</h2>
-              </div>              
-              <div class="row hobby-list" ng-style="{ 'border-bottom' : '0px' }">
+              </div>
+              <div
+                class="row hobby-list"
+                ng-style="{ 'border-bottom' : '0px' }"
+              >
                 <p class="hobby-names" ng-repeat="l in m.list">{{l}}</p>
               </div>
             </li>
@@ -422,7 +430,7 @@
                           />
                         </a>
                       </li>
-<!--                       <li>
+                      <!--                       <li>
                         <a
                           href="https://www.instagram.com/daphne_1017/"
                         >
@@ -433,7 +441,7 @@
                           />
                         </a>
                       </li> -->
-<!--                       <li>
+                      <!--                       <li>
                         <a
                           href="https://www.facebook.com/abhiruchimaurya/"
                         >
