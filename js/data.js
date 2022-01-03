@@ -308,14 +308,14 @@ app.controller("myCtrl", [
           "Gurugram , Haryana"          
         ],
       },
-      {
-        name: "Learning",
-        list: [
-          "Frontend Techs",
-          "CSS Art",
-          "Language"
-        ],
-      },
+      // {
+      //   name: "Learning",
+      //   list: [
+      //     "Frontend Techs",
+      //     "CSS Art",
+      //     "Language"
+      //   ],
+      // },
       {
         name: "Sports Played",
         list: [
