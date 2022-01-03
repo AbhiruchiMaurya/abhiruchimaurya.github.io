@@ -44,7 +44,7 @@
   body {
     font-family: "Montserrat";
   }
-  .collection-listings li h2 {
+  .collection-listings li h2 , .alumna-listings li h2, .hobby-listings li h2{
     font-size: 20px;
   }
 }
@@ -119,13 +119,13 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .collection-listings li,
+  .collection-listings li,.alumna-listings li, .hobby-listings li,
   .vol-card li {
     width: 70%;
     margin-left: 30px;
     max-height: 400px;
   }
-  .collection-listings {
+  .collection-listings,.alumna-listings, .hobby-listings {
     margin-left: 122px;
   }
   .responsive-image {
@@ -213,14 +213,15 @@
   .social-links-sec {
     padding-top: 0;
   }
-  .collection-listings li {
+  .collection-listings li,.alumna-listings li, .hobby-listings li {
     width: 82%;
     max-height: 400px;
   }
+
   .vol-card li {
     width: 82%;
   }
-  .collection-listings {
+  .collection-listings,.alumna-listings, .hobby-listings{
     margin-left: 2px;
   }
   .movie-pagination {
@@ -229,7 +230,7 @@
 }
 
 @media only screen and (max-width: 480px) {
-  .collection-listings li,
+  .collection-listings li,.alumna-listings li, .hobby-listings li,
   .vol-card li {
     width: 80%;
   }

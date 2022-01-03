@@ -123,6 +123,26 @@ h6 {
   font-family: "Montserrat", sans-serif;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #ff6666;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #330000;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
 /* Global Styles */
 
 body {
@@ -140,15 +160,6 @@ ol li {
   list-style-type: none;
   margin: 0;
   padding: 0;
-}
-a {
-  color: #000000;
-  text-decoration: none;
-}
-a:hover,
-a:focus {
-  text-decoration: none;
-  outline: none;
 }
 .ease {
   -webkit-transition: all 0.4s ease-in-out;
@@ -766,11 +777,12 @@ section {
   transition: 0.3s;
 }
 
-.experience:hover {
+.experience:hover ,.alumna-listings li:hover,.hobby-listings li:hover {
   box-shadow: 5px 5px 5px 5px rgba(255, 242, 204, 0.2);
 }
 
-.experience h4, .experience .key-words, .experience .project-name{
+.experience h4, .experience .key-words, .experience .project-name, .alumna-listings h2,.hobby-listings h2
+{
   border-bottom: 1px solid black;
   padding: 10px 0px;
 }
@@ -791,4 +803,46 @@ section {
 .experience .period
 {
   background-color: #ff9980;
+}
+
+.alumna-listings li{
+  background-color: #ffcccc;
+  padding: 0px 25px 0 50px;
+  margin: 10px;
+  box-shadow: 10px 14px 18px 0px rgba(0, 0, 0, 0.2);
+  border-left: 8px solid #990000;
+  width: 30.33%;
+  float: left;
+  text-align: left;
+  border-bottom-right-radius: 30px;
+  min-height: 250px;
+  box-shadow: 10px 14px 18px 0px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.alumna-img{
+  padding: 10px;
+  text-align: center;
+}
+
+.hobby-listings li{
+  background-color: #ffcccc;
+  padding: 0px 25px 0 50px;
+  margin: 10px;
+  box-shadow: 10px 14px 18px 0px rgba(0, 0, 0, 0.2);
+  border-right: 8px solid #990000;
+  width: 30.33%;
+  float: left;
+  text-align: left;
+  box-shadow: 10px 14px 18px 0px rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+}
+
+.hobby-names{
+  font-size: 16px;
+  padding: 5px;
+}
+.hobby-list{
+  height: 300px;
+  overflow: auto;
 }

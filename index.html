@@ -144,21 +144,24 @@
       <section class="our-collections" id="skillset">
         <div class="container">
           <div class="section-heading">
-            <h2 class="whiteHeader text-center">SKILLSET 👩‍💻</h2>
+            <h2 class="whiteHeader text-center">SKILLSET</h2>
           </div>
           <div class="skillset text-center">
-            <div class="rainbow"><img src="images/vuejs.JPG" /></div>   
+            <div class="rainbow"><img src="images/vuejs.JPG" /></div> 
+            <div class="rainbow"><img src="images/jest.png" /></div>  
             <div class="rainbow"><img src="images/vuetify.png" /></div>          
              <div class="rainbow"><img src="images/react-native.png" /></div>
              <div class="rainbow"><img src="images/reactjs.png" /></div>
              <div class="rainbow"><img src="images/angular.png" /></div>
-             <div class="rainbow"><img src="images/angularjs.png" /></div>
+             <div class="rainbow"><img src="images/angularjs.png" /></div>             
              <div class="rainbow"><img src="images/ts.png" /></div>
              <div class="rainbow"><img src="images/js.png" /></div>            
              <div class="rainbow"><img src="images/bootstrap.png" /></div>
              <div class="rainbow"><img src="images/jquery.png" /></div>
+             <div class="rainbow"><img src="images/website-accessibility.jpg" /></div>
              <div class="rainbow"><img src="images/html5.png" /></div>
              <div class="rainbow"><img src="images/css3.png" /></div>
+             <div class="rainbow"><img src="images/git.jpg" /></div>
           </div>
         </div>
       </section>
@@ -167,7 +170,7 @@
       <section class="our-collections background-white-section" id="experience">
         <div class="container">
           <div class="section-heading">
-            <h2 class="cherryHeader text-center">EXPERIENCE 💼</h2>
+            <h2 class="cherryHeader text-center">EXPERIENCE</h2>
           </div>  
         <div class="experience" ng-repeat="m in experienceList">
         
@@ -217,7 +220,7 @@
       <section class="our-collections" id="volunteer">
         <div class="container">
           <div class="section-heading">
-            <h2 class="whiteHeader text-center">VOLUNTEER EXPERIENCE 😇</h2>
+            <h2 class="whiteHeader text-center">VOLUNTEER EXPERIENCE</h2>
           </div>
           <ul class="row">
             <li ng-repeat="m in volunteerList" class="text-center col-md-4 col-sm-11 col-xs-11">
@@ -241,7 +244,7 @@
       <section id="education" class="background-white-section">
         <div class="container">
           <div class="section-heading">
-            <h2 class="cherryHeader text-center">EDUCATION 🎓</h2>
+            <h2 class="cherryHeader text-center">EDUCATION</h2>
           </div>
           <ul class="collection-listings">
             <li ng-repeat="m in education">
@@ -263,6 +266,52 @@
         </div>
       </section>
       <!--  /.education section -->
+
+      <!--  Alumna section -->
+      <section id="alumna">
+      <div class="container">
+        <div class="section-heading">
+          <h2 class="whiteHeader text-center">ALUMNA</h2>
+        </div>
+        <ul class="alumna-listings">
+          <li ng-repeat="m in alumna">
+            <div class="row">
+              <h2>{{m.name}}</h2>
+            </div>
+            <div class="row">
+              <label>Institution : </label>
+              <a href="{{m.link}}" target="_blank"
+                ><span class="p-l-2 text-spacing">{{m.institute}}</span></a
+              >
+            </div>
+            <div class="row" ng-style="{ 'border-bottom' : '0px' }">
+              <div class="alumna-img"><img src="{{m.src}}" /></div> 
+            </div>
+          </li>
+        </ul>
+      </div>
+      </section>
+      <!--  /.Alumnasection -->
+
+      <!--  Hobbies section -->
+      <section id="hobby" class="background-white-section">
+        <div class="container">
+          <div class="section-heading">
+            <h2 class="cherryHeader text-center">HOBBIES & INTERESTS</h2>
+          </div>
+          <ul class="hobby-listings">
+            <li ng-repeat="m in hobbies">
+              <div class="row">
+                <h2>{{m.name}}</h2>
+              </div>              
+              <div class="row hobby-list" ng-style="{ 'border-bottom' : '0px' }">
+                <p class="hobby-names" ng-repeat="l in m.list">{{l}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <!--  /.Hobbies section -->
 
       <!-- footer section -->
       <footer class="footer-section" id="contact">
@@ -334,6 +383,15 @@
                             src="images/linkedin.png"
                             alt="linkedin"
                             title="Linkedin"
+                          />
+                        </a>
+                      </li>
+                      <li>
+                        <a href="https://msng.link/o/?@inaba10=tg">
+                          <img
+                            src="images/telegram.png"
+                            alt="telegram"
+                            title="Telegram me at @inaba10"
                           />
                         </a>
                       </li>
