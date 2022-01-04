@@ -16,11 +16,11 @@ app.controller("myCtrl", [
           },
           {
             name: "Vue JS Web App - Proj 1",
-            technology_used: "VueJS, Jest",
+            technology_used: "VueJS, Jest, Web Accessibility",
           },
           {
             name: "Vue JS Web App - Proj 2",
-            technology_used: "VueJS, Jest",
+            technology_used: "VueJS, Jest, Web Accessibility",
           },
         ],
       },
@@ -294,7 +294,11 @@ app.controller("myCtrl", [
           "Bambolim Camp, Goa",          
           "Jaipur , Rajasthan",
           "Lucknow , Uttar Pradesh",
+          "Dharmshala, Himachal Pradesh",
+          "Yercaud, Tamil Nadu",
+          "Dalhousie, Himachal Pradesh",
           "New Delhi",
+          "McLeod Ganj, Himachal Pradesh ",         
           "Chandigarh, Punjab",
           "Panji, Goa",
           "Bijapur, Karnataka",
@@ -304,8 +308,7 @@ app.controller("myCtrl", [
           "Mathura , Uttar Pradesh", 
           "Agra , Uttar Pradesh", 
           "Noida , Uttar Pradesh", 
-          "Gorakhpur , Uttar Pradesh", 
-          "Gurugram , Haryana"          
+          "Gorakhpur , Uttar Pradesh"                
         ],
       },
       // {
