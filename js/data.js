@@ -272,6 +272,7 @@ app.controller("myCtrl", [
           "The Palace Of Illusion (Chitra Banerjee Divakaruni)",
           "The Immortals of Meluha (Amish Tripathi)",   
           "Rich Dad Poor Dad (Robert Kiyosaki)", 
+          "Chanakya's Chant (Ashwin Sanghi)",
           "I Too Had a Love Story (Ravinder Singh)",      
           "Digital Fortress (Dan Brown)",
           "Deception Point (Dan Brown)",      
