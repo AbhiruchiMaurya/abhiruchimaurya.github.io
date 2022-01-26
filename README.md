@@ -2,15 +2,32 @@
 
 <!--
 **AbhiruchiMaurya/abhiruchimaurya** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-
-Here are some ideas to get you started:
-
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
 -->
+
+Hi there, I'm Abhiruchi Maurya!
+I'm a Frontend Web Developer!
+🔭 I’m currently working on workplaces softwares!
+🌱 I’m currently learning everything 🤣
+👯 I’m looking to collaborate with other content creators for learning
+🥅 2022 Goals: Become a good full-stack developer.
+⚡ Fun fact: I love to doing CSS Art and I am a bif anime fan!!!
+Connect with me:
+abhiruchimaurya-portfolioabhiruchimaurya | Twitterabhiruchimaurya | LinkedInabhiruchi-maurya-365b5377
+
+
+Languages and Tools:
+Visual Studio Code
+
+HTML5
+
+CSS3
+
+JavaScript
+
+Git
+
+GitHub
+
+HTML5
+
+
