@@ -5,17 +5,25 @@
 -->
 
 Hi there, I'm Abhiruchi Maurya!
+
 I'm a Frontend Web Developer!
+
 🔭 I’m currently working on workplaces softwares!
+
 🌱 I’m currently learning everything 🤣
+
 👯 I’m looking to collaborate with other content creators for learning
-🥅 2022 Goals: Become a good full-stack developer.
+
+🥅 2022 Goals: Become a good Full-stack developer.
+
 ⚡ Fun fact: I love to doing CSS Art and I am a bif anime fan!!!
+
 Connect with me:
+
 abhiruchimaurya-portfolioabhiruchimaurya | Twitterabhiruchimaurya | LinkedInabhiruchi-maurya-365b5377
 
-
 Languages and Tools:
+
 Visual Studio Code
 
 HTML5
