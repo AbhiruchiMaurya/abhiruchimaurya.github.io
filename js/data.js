@@ -15,11 +15,15 @@ app.controller("myCtrl", [
             link: "https://androidappsapk.co/detail-circorsmart/",
           },
           {
-            name: "Vue JS Web App - Proj 1",
+            name: "CCC",
             technology_used: "VueJS, Jest, Web Accessibility",
           },
           {
-            name: "Vue JS Web App - Proj 2",
+            name: "WW",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          },
+          {
+            name: "WWT",
             technology_used: "VueJS, Jest, Web Accessibility",
           },
         ],
