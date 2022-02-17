@@ -342,12 +342,10 @@ app.controller("myCtrl", [
       {
         name: "Miscellaneous",
         list: [
-          "Sketching",
           "Singing / Song Recording",
           "Dancing",
           "Making Videos",
           "Making Websites",
-//           "Writing Songs",
           "Poster Designing"
         ],
       },
