@@ -261,6 +261,7 @@ app.controller("myCtrl", [
           "TVF- Kota Factory",          
           "Moms",
           "Power Rangers",
+          "Rocket Boys"
         ],
       },
       {
@@ -342,7 +343,7 @@ app.controller("myCtrl", [
           "Dancing",
           "Making Videos",
           "Making Websites",
-          "Writing Songs",
+//           "Writing Songs",
           "Poster Designing"
         ],
       },
