@@ -637,6 +637,13 @@ section {
   margin: 5px;
 }
 
+p.skill-name{
+  font-size: 20px;
+  font-weight: 500;
+  color: white;
+  margin: 0px;
+}
+
 @keyframes rotate {
   100% {
     transform: rotate(1turn);
@@ -647,11 +654,11 @@ section {
   position: relative;
   display: inline-block;
   z-index: 0;
-  width: 150px;
-  height: 150px;
+  /* width: 150px; */
+  /* height: 150px; */
   border-radius: 10px;
   overflow: hidden;
-  padding: 2rem;
+  padding: 5rem;
   margin: 10px;
 }
 
@@ -663,18 +670,18 @@ section {
   top: -50%;
   width: 200%;
   height: 200%;
-  background-color: #ff4d4d;
+  background-color: #b44b4b;
   background-repeat: no-repeat;
   background-size: 50% 50%, 50% 50%;
   background-position: 0 0, 100% 0, 100% 100%, 0 100%;
-  background-image: linear-gradient(#cc0000, #cc0000),
-    linear-gradient(#660000, #660000), linear-gradient(#d53e33, #d53e33),
+  background-image: linear-gradient(#ccbe00, #ccbe00),
+    linear-gradient(#35b840, #35b840), linear-gradient(#d53e33, #d53e33),
     linear-gradient(#ffcccc, #ffcccc);
-  animation: rotate 80s linear infinite;
+  /* animation: rotate 80s linear infinite; */
 }
 
 .rainbow:nth-child(odd)::before {
-  background-image: linear-gradient(#cc0000, #cc0000),
+  background-image: linear-gradient(#b83535, #b83535),
     linear-gradient(#ffff33, #ffff33), linear-gradient(#d53e33, #d53e33),
     linear-gradient(#ffcccc, #ffcccc);
 }
@@ -686,7 +693,7 @@ section {
   top: 6px;
   width: calc(100% - 12px);
   height: calc(100% - 12px);
-  background: white;
+  background: black;  
   border-radius: 5px;
 }
 

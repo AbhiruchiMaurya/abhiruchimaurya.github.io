@@ -156,23 +156,66 @@
             <h2 class="whiteHeader text-center">SKILLSET</h2>
           </div>
           <div class="skillset text-center">
-            <div class="rainbow" title="VueJS"><img alt="vuejs" src="images/vuejs.JPG" /></div>
-            <div class="rainbow" title="Jest"><img alt="jest" src="images/jest.png" /></div>
-            <div class="rainbow" title="Vuetify"><img alt="vuetify" src="images/vuetify.png" /></div>
-            <div class="rainbow" title="React Native"><img alt="react native" src="images/react-native.png" /></div>
-            <div class="rainbow" title="ReactJS"><img alt="reactJS" src="images/reactjs.png" /></div>
-            <div class="rainbow" title="Angular"><img alt="angular" src="images/angular.png" /></div>
-            <div class="rainbow" title="AngularJS"><img alt="angularJS" src="images/angularjs.png" /></div>
-            <div class="rainbow" title="TypeScript"><img alt="typescript" src="images/ts.png" /></div>
-            <div class="rainbow" title="JavaScript"><img alt="javascript" src="images/js.png" /></div>
-            <div class="rainbow" title="Bootstrap"><img alt="bootstrap" src="images/bootstrap.png" /></div>
-            <div class="rainbow" title="JQuery"><img alt="jquery" src="images/jquery.png" /></div>
-            <div class="rainbow" title="Web Accessibility">
-              <img alt="website-accessibility" src="images/website-accessibility.jpg" />
+            <div class="rainbow" title="VueJS"> 
+              <p class="skill-name">VueJS</p>
+              <!-- <img alt="vuejs" src="images/vuejs.JPG" /> -->
             </div>
-            <div class="rainbow" title="HTML5"><img alt="html5" src="images/html5.png" /></div>
-            <div class="rainbow" title="CSS3"><img alt="css3" src="images/css3.png" /></div>
-            <div class="rainbow" title="Git"><img alt="git" src="images/git.jpg" /></div>
+            <div class="rainbow" title="Jest">
+              <p class="skill-name">Jest</p>
+              <!-- <img alt="jest" src="images/jest.png" /> -->
+            </div>
+            <div class="rainbow" title="Vuetify">
+              <p class="skill-name">Vuetify</p>
+              <!-- <img alt="vuetify" src="images/vuetify.png" /> -->
+            </div>
+            <div class="rainbow" title="React Native">
+              <p class="skill-name">React Native</p>
+              <!-- <img alt="react native" src="images/react-native.png" /> -->
+            </div>
+            <div class="rainbow" title="ReactJS">
+              <p class="skill-name">ReactJS</p>
+              <!-- <img alt="reactJS" src="images/reactjs.png" /> -->
+            </div>
+            <div class="rainbow" title="Angular">
+              <p class="skill-name">Angular</p>
+              <!-- <img alt="angular" src="images/angular.png" /> -->
+            </div>
+            <div class="rainbow" title="AngularJS">
+              <p class="skill-name">AngularJS</p>
+              <!-- <img alt="angularJS" src="images/angularjs.png" /> -->
+            </div>
+            <div class="rainbow" title="TypeScript">
+              <p class="skill-name">TypeScript</p>
+              <!-- <img alt="typescript" src="images/ts.png" /> -->
+            </div>
+            <div class="rainbow" title="JavaScript">
+              <p class="skill-name">JavaScript</p>
+              <!-- <img alt="javascript" src="images/js.png" /> -->
+            </div>
+            <div class="rainbow" title="Bootstrap">
+              <p class="skill-name">Bootstrap</p>
+              <!-- <img alt="bootstrap" src="images/bootstrap.png" /> -->
+            </div>
+            <div class="rainbow" title="JQuery">
+              <p class="skill-name">JQuery</p>
+              <!-- <img alt="jquery" src="images/jquery.png" /> -->
+            </div>
+            <div class="rainbow" title="Web Accessibility">
+              <p class="skill-name">Web Accessibility</p>
+              <!-- <img alt="website-accessibility" src="images/website-accessibility.jpg" /> -->
+            </div>
+            <div class="rainbow" title="HTML5">
+              <p class="skill-name">HTML5</p>
+              <!-- <img alt="html5" src="images/html5.png" /> -->
+            </div>
+            <div class="rainbow" title="CSS3">
+              <p class="skill-name">CSS3</p>
+              <!-- <img alt="css3" src="images/css3.png" /> -->
+            </div>
+            <div class="rainbow" title="Git">
+              <p class="skill-name">Git</p>
+              <!-- <img alt="git" src="images/git.jpg" /> -->
+            </div>
           </div>
         </div>
       </section>
@@ -199,7 +242,7 @@
                 <span class="keywords p-l-2 text-spacing"> {{k}} </span>
               </span>
             </div>
-            <div class="row project-name" ng-repeat="k in m.project">
+            <div ng-if="true" class="row project-name" ng-repeat="k in m.project">
               <div>
                 <label>Project Name : </label>
                 <a href="{{k.link}}" target="_blank" ng-if="k.link">
