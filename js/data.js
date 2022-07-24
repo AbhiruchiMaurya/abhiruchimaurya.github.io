@@ -14,10 +14,10 @@ app.controller("myCtrl", [
             technology_used: "React Native",
             link: "https://androidappsapk.co/detail-circorsmart/",
           },
-          {
-            name: "COVID Tools",
-            technology_used: "VueJS, Jest, Web Accessibility",
-          },
+          // {
+          //   name: "COVID Tools",
+          //   technology_used: "VueJS, Jest, Web Accessibility",
+          // },
           {
             name: "CCC",
             technology_used: "VueJS, Jest, Web Accessibility",
