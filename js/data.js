@@ -15,6 +15,10 @@ app.controller("myCtrl", [
             link: "https://androidappsapk.co/detail-circorsmart/",
           },
           {
+            name: "COVID Tools",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          },
+          {
             name: "CCC",
             technology_used: "VueJS, Jest, Web Accessibility",
           },
@@ -25,7 +29,7 @@ app.controller("myCtrl", [
           {
             name: "WWT",
             technology_used: "VueJS, Jest, Web Accessibility",
-          },
+          }
         ],
       },
       {
