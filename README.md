@@ -14,7 +14,7 @@ I'm a Frontend Web Developer!
 
 👯 I’m looking to collaborate with other content creators for learning
 
-🥅 2022 Goals: Become a good Full-stack developer.
+🥅 2023 Goals: Become a good Full-stack developer.
 
 ⚡ Fun fact: I love to doing CSS Art and I am a bif anime fan!!!
 
