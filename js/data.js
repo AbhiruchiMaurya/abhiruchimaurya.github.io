@@ -19,15 +19,15 @@ app.controller("myCtrl", [
           //   technology_used: "VueJS, Jest, Web Accessibility",
           // },
           {
-            name: "CCC",
+            name: "Campus Conference Center",
             technology_used: "VueJS, Jest, Web Accessibility",
           },
           {
-            name: "WW",
+            name: "Workplace Web",
             technology_used: "VueJS, Jest, Web Accessibility",
           },
           {
-            name: "WWT",
+            name: "Workplace Web Theme",
             technology_used: "VueJS, Jest, Web Accessibility",
           }
         ],
@@ -132,7 +132,7 @@ app.controller("myCtrl", [
     ];
 
     $scope.aboutMe =
-      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 5 years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
+      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 6 years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
 
     $scope.year = new Date().getFullYear();
   },
