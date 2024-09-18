@@ -4,6 +4,30 @@ app.controller("myCtrl", [
   function ($scope) {
     $scope.experienceList = [
       {
+        designation: "Technology Lead at Austin, Texas",
+        company: "Infosys Limited",
+        period: "2024-Present",
+        technology: "VueJS",
+        project: [
+          {
+            name: "COVID Tools",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          },
+          {
+            name: "Campus Conference Center",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          },
+          {
+            name: "Workplace Web",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          },
+          {
+            name: "Workplace Web Theme",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          }
+        ],
+      },
+      {
         designation: "Technology Analyst",
         company: "Infosys Limited",
         period: "2020-Present",
@@ -132,7 +156,7 @@ app.controller("myCtrl", [
     ];
 
     $scope.aboutMe =
-      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 6 years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
+      " Hey there! 👋🏽 I am Abhiruchi. I come from Bangalore, India. I am an adept Web Developer with more than 7+ years of experience and find myself crawling towards the beauties and aesthetics of the web. I feel like it's every consumer's necessity to experience quality products, with a robust feature-set whilst enjoying a hassle-free User Experience ☄️ I strive to make that possible in every product I develop/design. Cheers! 🍻";
 
     $scope.year = new Date().getFullYear();
   },
