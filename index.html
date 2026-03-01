@@ -1,529 +1,1008 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="myList" ng-controller="myCtrl">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="theme-color" content="#27303c" />
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <title>Abhiruchi Maurya</title>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <!-- Fonts -->
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Dancing+Script"
-      rel="stylesheet"
-    />
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <!-- Animated CSS -->
-    <link rel="stylesheet" type="text/css" href="css/animate.min.css" />
-    <!-- Site Custom CSS -->
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="all" />
-    <!-- Site Custom Responsive CSS -->
-    <link
-      href="css/responsive.css"
-      type="text/css"
-      rel="stylesheet"
-      media="all"
-    />
-  </head>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Abhiruchi Maurya | Developer</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/3.4.21/vue.global.prod.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Noto+Sans+JP:wght@300;400;500;700&family=Orbitron:wght@400;600;700;900&family=Sawarabi+Mincho&display=swap" rel="stylesheet" />
+  <link rel="icon" href="favicon.png" />
 
-  <body>
-    <!-- Site Preloader -->
-    <div id="preloader">
-      <div id="status">&nbsp;</div>
+<style>
+/* ═══════════ CSS VARIABLES ═══════════ */
+:root {
+  --sakura:      #ffb7c5;
+  --sakura-dark: #e8839a;
+  --neon-cyan:   #00e5ff;
+  --neon-pink:   #ff006e;
+  --neon-gold:   #ffd700;
+  --neon-purple: #bf5fff;
+  --void:        #04040e;
+  --midnight:    #08081c;
+  --deep-navy:   #0d0d2b;
+  --panel:       rgba(13,13,43,0.88);
+  --panel-light: rgba(20,20,60,0.75);
+  --text:        #eaeaff;
+  --text-muted:  #7878aa;
+  --border:      rgba(0,229,255,0.2);
+  --border-pink: rgba(255,183,197,0.3);
+  --glow-cyan:   0 0 20px rgba(0,229,255,0.5);
+  --glow-pink:   0 0 20px rgba(255,0,110,0.5);
+  --glow-gold:   0 0 20px rgba(255,215,0,0.5);
+  --radius:      12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: 'Noto Sans JP', sans-serif;
+  font-weight: 300;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: linear-gradient(var(--neon-cyan), var(--sakura)); border-radius: 4px; }
+
+/* ═══════════ BACKGROUND ═══════════ */
+.bg-canvas {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(0,229,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 90% 80%, rgba(255,0,110,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 50% 50%, rgba(191,95,255,0.04) 0%, transparent 70%),
+    var(--void);
+}
+.grid-lines {
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(0,229,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,229,255,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridMove 30s linear infinite;
+}
+@keyframes gridMove { 0% { transform: translate(0,0); } 100% { transform: translate(60px,60px); } }
+
+.orb {
+  position: fixed; border-radius: 50%; pointer-events: none; z-index: 0;
+  filter: blur(60px); animation: orbFloat ease-in-out infinite alternate;
+}
+.orb-1 { width: 300px; height: 300px; top: -100px; left: -100px; background: rgba(0,229,255,0.07); animation-duration: 8s; }
+.orb-2 { width: 250px; height: 250px; top: 40%; right: -80px; background: rgba(255,0,110,0.07); animation-duration: 11s; animation-delay: -3s; }
+.orb-3 { width: 200px; height: 200px; bottom: -80px; left: 30%; background: rgba(255,215,0,0.05); animation-duration: 9s; animation-delay: -6s; }
+@keyframes orbFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(30px,-30px) scale(1.1); }
+}
+
+/* ═══════════ PETALS ═══════════ */
+.petals-wrap { position: fixed; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+.petal { position: absolute; top: -30px; animation: petalFall linear infinite; }
+@keyframes petalFall {
+  0%   { transform: translateY(-30px) rotate(0deg) translateX(0);    opacity: 0.7; }
+  50%  { transform: translateY(50vh)  rotate(360deg) translateX(40px); opacity: 0.5; }
+  100% { transform: translateY(105vh) rotate(720deg) translateX(-20px); opacity: 0; }
+}
+
+/* ═══════════ LOADER ═══════════ */
+.loader {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--void);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+  transition: opacity 0.6s ease;
+}
+.loader.hidden { opacity: 0; pointer-events: none; }
+.loader-wrap { position: relative; width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; }
+.loader-ring {
+  width: 80px; height: 80px; border-radius: 50%;
+  border: 3px solid transparent;
+  border-top-color: var(--neon-cyan);
+  border-right-color: var(--sakura);
+  position: absolute;
+  animation: spin 1s linear infinite;
+}
+.loader-ring-2 {
+  width: 56px; height: 56px; border-radius: 50%;
+  border: 2px solid transparent;
+  border-bottom-color: var(--neon-gold);
+  position: absolute;
+  animation: spin 0.8s linear infinite reverse;
+}
+.loader-char { font-size: 1.8rem; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.loader-text {
+  font-family: 'Orbitron', sans-serif; font-size: 0.65rem;
+  letter-spacing: 5px; color: var(--text-muted);
+  animation: flicker 1.5s ease-in-out infinite alternate;
+}
+@keyframes flicker { 0% { opacity: 0.3; } 100% { opacity: 1; } }
+
+/* ═══════════ NAVBAR ═══════════ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.9rem 3rem;
+  background: rgba(4,4,14,0.93);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  animation: navIn 0.8s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes navIn { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+.nav-logo {
+  font-family: 'Orbitron', sans-serif; font-size: 0.9rem; font-weight: 900; letter-spacing: 4px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--sakura), var(--neon-gold));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  color: var(--text-muted);
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.62rem; font-weight: 600; letter-spacing: 2.5px;
+  text-decoration: none; text-transform: uppercase;
+  transition: color 0.3s, text-shadow 0.3s;
+  position: relative; padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  width: 0; height: 1.5px;
+  background: var(--neon-cyan);
+  transition: width 0.3s; box-shadow: var(--glow-cyan);
+}
+.nav-links a:hover, .nav-links a.active { color: var(--neon-cyan); text-shadow: var(--glow-cyan); }
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer;
+  background: none; border: none; padding: 4px;
+}
+.hamburger span { width: 24px; height: 2px; background: var(--neon-cyan); transition: all 0.3s; border-radius: 2px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+@media (max-width: 768px) {
+  nav { padding: 0.9rem 1.5rem; }
+  .hamburger { display: flex; }
+  .nav-links {
+    position: fixed; top: 57px; left: 0; right: 0;
+    background: rgba(4,4,14,0.97); backdrop-filter: blur(16px);
+    flex-direction: column; gap: 0; padding: 1rem 0;
+    border-bottom: 1px solid var(--border);
+    transform: translateY(-110%); transition: transform 0.4s cubic-bezier(.22,1,.36,1);
+  }
+  .nav-links.open { transform: translateY(0); }
+  .nav-links a { display: block; padding: 0.9rem 2.5rem; }
+}
+
+/* ═══════════ SECTION WRAPPER ═══════════ */
+.section-wrap {
+  position: relative; z-index: 2;
+  padding: 7rem 2rem 5rem;
+  max-width: 1100px; margin: 0 auto;
+}
+.section-head { text-align: center; margin-bottom: 4rem; }
+.section-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  background: linear-gradient(135deg, var(--neon-cyan) 0%, var(--sakura) 60%, var(--neon-gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 25px rgba(0,229,255,0.3));
+  margin-bottom: 0.5rem;
+}
+.section-sub { font-family: 'Orbitron', sans-serif; font-size: 0.62rem; letter-spacing: 4px; color: var(--text-muted); text-transform: uppercase; }
+.divider { width: 80px; height: 2px; margin: 1.2rem auto 0; background: linear-gradient(90deg, transparent, var(--neon-cyan), var(--sakura), transparent); box-shadow: var(--glow-cyan); }
+
+/* Reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ═══════════ HERO ═══════════ */
+#hero {
+  position: relative; z-index: 2; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 6rem 2rem 4rem; overflow: hidden;
+}
+.hero-eyebrow {
+  font-family: 'Orbitron', sans-serif; font-size: 0.68rem; letter-spacing: 5px;
+  color: var(--sakura); text-transform: uppercase; margin-bottom: 1.2rem;
+  animation: fadeUp 0.8s 0.3s both;
+}
+.hero-ring {
+  position: relative; width: 190px; height: 190px; margin: 0 auto 2rem;
+  animation: fadeUp 0.8s 0.4s both;
+}
+.hero-ring-outer, .hero-ring-inner {
+  position: absolute; border-radius: 50%;
+  border: 2px solid transparent;
+}
+.hero-ring-outer {
+  inset: 0;
+  background: linear-gradient(var(--void),var(--void)) padding-box,
+              linear-gradient(135deg, var(--neon-cyan), var(--sakura), var(--neon-gold), var(--neon-purple), var(--neon-cyan)) border-box;
+  animation: spin 4s linear infinite;
+}
+.hero-ring-inner {
+  inset: 14px;
+  background: linear-gradient(var(--void),var(--void)) padding-box,
+              linear-gradient(135deg, var(--sakura), var(--neon-cyan), var(--neon-purple)) border-box;
+  animation: spin 6s linear infinite reverse;
+}
+.hero-avatar {
+  position: absolute; inset: 28px; border-radius: 50%;
+  background: var(--deep-navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem; z-index: 1;
+  box-shadow: inset 0 0 30px rgba(0,229,255,0.1);
+}
+.hero-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.2rem, 6.5vw, 4.5rem);
+  font-weight: 900; line-height: 1.1;
+  background: linear-gradient(135deg, #fff 0%, var(--neon-cyan) 30%, var(--sakura) 65%, var(--neon-gold) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px rgba(0,229,255,0.35));
+  animation: fadeUp 0.8s 0.5s both;
+}
+.hero-role {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.8rem, 2vw, 1.15rem); font-weight: 700; letter-spacing: 6px;
+  margin: 1rem 0 1.5rem; color: var(--neon-cyan); text-shadow: var(--glow-cyan);
+  animation: fadeUp 0.8s 0.7s both;
+}
+.hero-tagline { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 0.8rem; animation: fadeUp 0.8s 0.9s both; }
+.hero-tagline span { color: var(--sakura); }
+.hero-location {
+  font-family: 'Orbitron', sans-serif; font-size: 0.68rem; letter-spacing: 3px;
+  color: var(--text-muted); margin-bottom: 2.5rem;
+  animation: fadeUp 0.8s 1s both;
+}
+.hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 0.8s 1.1s both; }
+.btn {
+  font-family: 'Orbitron', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 3px;
+  padding: 0.85rem 2.2rem; border-radius: 4px; text-decoration: none;
+  text-transform: uppercase; position: relative; overflow: hidden;
+  transition: all 0.3s; cursor: pointer; border: 1.5px solid;
+}
+.btn span { position: relative; z-index: 1; }
+.btn::before { content: ''; position: absolute; inset: 0; transform: translateX(-101%); transition: transform 0.3s; }
+.btn-cyan { border-color: var(--neon-cyan); color: var(--neon-cyan); }
+.btn-cyan::before { background: var(--neon-cyan); }
+.btn-cyan:hover { color: var(--void); box-shadow: var(--glow-cyan); }
+.btn-pink { border-color: var(--sakura); color: var(--sakura); }
+.btn-pink::before { background: var(--sakura); }
+.btn-pink:hover { color: var(--void); box-shadow: var(--glow-pink); }
+.btn:hover::before { transform: translateX(0); }
+
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  animation: fadeUp 0.8s 1.5s both;
+}
+.scroll-hint span { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 3px; color: var(--text-muted); }
+.scroll-arrow {
+  width: 22px; height: 22px;
+  border-right: 2px solid var(--neon-cyan); border-bottom: 2px solid var(--neon-cyan);
+  transform: rotate(45deg);
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+@keyframes arrowBounce {
+  0%,100% { transform: rotate(45deg) translate(0,0); opacity: 1; }
+  50%      { transform: rotate(45deg) translate(5px,5px); opacity: 0.4; }
+}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ═══════════ ABOUT ═══════════ */
+.about-grid {
+  display: grid; grid-template-columns: 220px 1fr; gap: 4rem; align-items: center;
+}
+@media (max-width: 768px) { .about-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+.about-avatar-col { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+.avatar-frame {
+  width: 200px; height: 200px; position: relative;
+  border-radius: 18px; padding: 3px;
+  background: linear-gradient(135deg, var(--neon-cyan), var(--sakura), var(--neon-gold));
+}
+.avatar-inner {
+  width: 100%; height: 100%; border-radius: 16px;
+  background: var(--deep-navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5.5rem;
+  box-shadow: inset 0 0 30px rgba(0,229,255,0.08);
+}
+.status-badge {
+  display: flex; align-items: center; gap: 8px;
+  background: var(--panel); border: 1px solid var(--border);
+  padding: 0.5rem 1.2rem; border-radius: 30px;
+  font-family: 'Orbitron', sans-serif; font-size: 0.62rem; letter-spacing: 2px; color: var(--neon-cyan);
+}
+.status-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: #00ff88; box-shadow: 0 0 8px #00ff88;
+  animation: pulseDot 2s ease-in-out infinite;
+}
+@keyframes pulseDot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.4); opacity: 0.6; } }
+.about-text h3 { font-family: 'Cinzel Decorative', serif; font-size: 1rem; color: var(--sakura); margin-bottom: 1.2rem; letter-spacing: 2px; }
+.about-text p { line-height: 1.9; color: var(--text-muted); margin-bottom: 1rem; font-size: 0.93rem; }
+.about-text p strong { color: var(--text); }
+.about-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+.about-tag {
+  font-family: 'Orbitron', sans-serif; font-size: 0.6rem; letter-spacing: 1.5px;
+  padding: 0.4rem 0.9rem; border-radius: 4px;
+  border: 1px solid var(--border-pink); color: var(--sakura);
+  background: rgba(255,183,197,0.06); transition: all 0.3s;
+}
+.about-tag:hover { background: rgba(255,183,197,0.15); border-color: var(--sakura); box-shadow: var(--glow-pink); transform: translateY(-2px); }
+
+/* ═══════════ SKILLS ═══════════ */
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); gap: 1rem; }
+.skill-card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.4rem 1rem; text-align: center;
+  cursor: default; transition: all 0.35s cubic-bezier(.22,1,.36,1); position: relative; overflow: hidden;
+}
+.skill-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--sakura));
+  transform: scaleX(0); transition: transform 0.35s;
+}
+.skill-card:hover::before { transform: scaleX(1); }
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(0,229,255,0.5);
+  box-shadow: 0 10px 40px rgba(0,229,255,0.12);
+  background: var(--panel-light);
+}
+.skill-icon { font-size: 2rem; margin-bottom: 0.7rem; display: block; }
+.skill-name { font-family: 'Orbitron', sans-serif; font-size: 0.58rem; letter-spacing: 2px; color: var(--text-muted); transition: color 0.3s; }
+.skill-card:hover .skill-name { color: var(--neon-cyan); }
+.skill-bar { margin-top: 0.8rem; height: 3px; border-radius: 3px; background: rgba(255,255,255,0.06); overflow: hidden; }
+.skill-fill {
+  height: 100%; border-radius: 3px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--sakura));
+  transform-origin: left; transition: transform 1.2s cubic-bezier(.22,1,.36,1);
+  box-shadow: 0 0 8px rgba(0,229,255,0.6);
+}
+
+/* ═══════════ TIMELINE ═══════════ */
+.timeline { position: relative; padding: 2rem 0; }
+.timeline::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, transparent, var(--neon-cyan) 20%, var(--sakura) 50%, var(--neon-gold) 80%, transparent);
+  box-shadow: 0 0 12px rgba(0,229,255,0.4);
+}
+.tl-item { display: flex; margin-bottom: 4rem; position: relative; align-items: flex-start; }
+.tl-item:nth-child(odd)  { flex-direction: row-reverse; }
+.tl-item:nth-child(even) .tl-content { margin-right: calc(50% + 2.5rem); }
+.tl-item:nth-child(odd)  .tl-content { margin-left:  calc(50% + 2.5rem); }
+
+.tl-content {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem;
+  transition: all 0.4s; position: relative; overflow: hidden;
+  width: calc(50% - 2.5rem);
+  flex-shrink: 0;
+}
+.tl-content::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--sakura), var(--neon-gold));
+}
+.tl-content:hover {
+  border-color: rgba(0,229,255,0.4);
+  box-shadow: 0 0 30px rgba(0,229,255,0.1), 0 8px 32px rgba(0,0,0,0.4);
+  transform: translateY(-4px);
+}
+/* Arrow tip */
+.tl-item:nth-child(even) .tl-content::after {
+  content: ''; position: absolute; top: 22px; right: -10px;
+  border: 10px solid transparent; border-left-color: rgba(0,229,255,0.25);
+}
+.tl-item:nth-child(odd) .tl-content::after {
+  content: ''; position: absolute; top: 22px; left: -10px;
+  border: 10px solid transparent; border-right-color: rgba(0,229,255,0.25);
+}
+.tl-dot {
+  position: absolute; left: 50%; top: 22px; width: 18px; height: 18px; border-radius: 50%;
+  transform: translateX(-50%); z-index: 2;
+  background: var(--neon-cyan); border: 3px solid var(--void);
+  box-shadow: 0 0 15px var(--neon-cyan), 0 0 30px rgba(0,229,255,0.4);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.tl-item:hover .tl-dot {
+  transform: translateX(-50%) scale(1.5);
+  box-shadow: 0 0 25px var(--neon-cyan), 0 0 50px rgba(0,229,255,0.5);
+}
+.tl-period {
+  position: absolute; left: 50%; top: 46px; transform: translateX(-50%);
+  font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 1.5px;
+  color: var(--text-muted); white-space: nowrap;
+  background: var(--void); padding: 2px 8px; border-radius: 20px; border: 1px solid var(--border);
+}
+.tl-designation { font-family: 'Cinzel Decorative', serif; font-size: 0.95rem; color: var(--text); margin-bottom: 0.4rem; }
+.tl-company { font-family: 'Orbitron', sans-serif; font-size: 0.68rem; letter-spacing: 2px; color: var(--neon-cyan); margin-bottom: 1rem; }
+.tl-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.8rem; }
+.tl-chip {
+  font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 1.5px;
+  padding: 0.28rem 0.65rem; border-radius: 4px;
+  background: rgba(0,229,255,0.07); border: 1px solid rgba(0,229,255,0.2); color: var(--neon-cyan);
+  transition: all 0.3s;
+}
+.tl-chip:hover { background: rgba(0,229,255,0.18); box-shadow: var(--glow-cyan); }
+.tl-projects { margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0.3rem; }
+.tl-proj { font-size: 0.82rem; color: var(--text-muted); padding-left: 0.8rem; border-left: 2px solid var(--sakura-dark); }
+.tl-proj a { color: var(--sakura); text-decoration: none; }
+.tl-proj a:hover { text-shadow: var(--glow-pink); }
+
+@media (max-width: 768px) {
+  .timeline::before { left: 16px; }
+  .tl-item, .tl-item:nth-child(odd) { flex-direction: column; padding-left: 3rem; }
+  .tl-item:nth-child(even) .tl-content,
+  .tl-item:nth-child(odd)  .tl-content { margin: 0; width: 100%; }
+  .tl-content::after, .tl-item:nth-child(odd) .tl-content::after { display: none; }
+  .tl-dot { left: 16px; top: 16px; }
+  .tl-period { left: 3rem; top: auto; transform: none; position: static; display: block; margin-bottom: 0.6rem; }
+}
+
+/* ═══════════ VOLUNTEER ═══════════ */
+.vol-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px,1fr)); gap: 1.5rem; }
+.vol-card {
+  background: var(--panel); border: 1px solid var(--border-pink);
+  border-radius: var(--radius); padding: 2rem;
+  transition: all 0.35s; position: relative; overflow: hidden;
+}
+.vol-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--sakura), var(--neon-purple));
+  transform: scaleX(0); transition: transform 0.35s; transform-origin: left;
+}
+.vol-card:hover::after { transform: scaleX(1); }
+.vol-card:hover { transform: translateY(-6px); border-color: rgba(255,183,197,0.5); box-shadow: 0 10px 40px rgba(255,0,110,0.08); }
+.vol-icon { font-size: 2.2rem; margin-bottom: 1rem; display: block; }
+.vol-title { font-family: 'Cinzel Decorative', serif; font-size: 0.9rem; color: var(--sakura); margin-bottom: 0.8rem; }
+.vol-desc { font-size: 0.87rem; color: var(--text-muted); line-height: 1.8; }
+
+/* ═══════════ EDUCATION ═══════════ */
+.edu-list { display: flex; flex-direction: column; gap: 1.2rem; }
+.edu-card {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.8rem 2rem;
+  display: flex; align-items: center; gap: 2rem;
+  transition: all 0.35s;
+}
+.edu-card:hover { border-color: rgba(255,215,0,0.4); box-shadow: 0 8px 30px rgba(255,215,0,0.07); transform: translateX(6px); }
+.edu-icon { font-size: 2.4rem; flex-shrink: 0; }
+.edu-name { font-family: 'Cinzel Decorative', serif; font-size: 0.95rem; color: var(--text); margin-bottom: 0.4rem; }
+.edu-inst { font-family: 'Orbitron', sans-serif; font-size: 0.68rem; letter-spacing: 2px; color: var(--neon-gold); text-decoration: none; transition: text-shadow 0.3s; }
+.edu-inst:hover { text-shadow: var(--glow-gold); }
+.edu-period { font-size: 0.8rem; color: var(--text-muted); margin-top: 0.3rem; }
+
+/* ═══════════ HOBBIES ═══════════ */
+.hobby-wrap { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.hobby-chip {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 40px; padding: 0.75rem 1.6rem;
+  display: flex; align-items: center; gap: 0.6rem;
+  font-size: 0.88rem; color: var(--text-muted);
+  transition: all 0.3s; cursor: default;
+}
+.hobby-chip:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: var(--glow-cyan); transform: scale(1.06); }
+.hobby-chip-icon { font-size: 1.3rem; }
+
+/* ═══════════ CONTACT ═══════════ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+@media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+.contact-info h3 { font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; color: var(--text); margin-bottom: 1rem; }
+.contact-info p { color: var(--text-muted); line-height: 1.9; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.c-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; color: var(--text-muted); font-size: 0.88rem; }
+.c-row a { color: var(--neon-cyan); text-decoration: none; transition: text-shadow 0.3s; }
+.c-row a:hover { text-shadow: var(--glow-cyan); }
+.c-ico {
+  width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0;
+  background: var(--panel); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; font-size: 1rem;
+}
+.socials { display: flex; gap: 1rem; margin-top: 2rem; }
+.social-btn {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--panel); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; text-decoration: none; color: var(--text-muted);
+  transition: all 0.3s;
+}
+.social-btn:hover { border-color: var(--neon-cyan); color: var(--neon-cyan); box-shadow: var(--glow-cyan); transform: translateY(-4px) rotate(10deg); }
+.contact-panel {
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2.5rem; text-align: center;
+  position: relative; overflow: hidden;
+}
+.contact-panel::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--neon-cyan), var(--sakura), var(--neon-gold));
+}
+.contact-panel-emoji { font-size: 3.2rem; display: block; margin-bottom: 1rem; }
+.contact-panel h4 { font-family: 'Cinzel Decorative', serif; font-size: 1rem; color: var(--sakura); margin-bottom: 0.8rem; }
+.contact-panel p { color: var(--text-muted); font-size: 0.88rem; line-height: 1.85; }
+
+/* ═══════════ FOOTER ═══════════ */
+footer {
+  position: relative; z-index: 2; text-align: center; padding: 2rem;
+  border-top: 1px solid var(--border);
+  font-family: 'Orbitron', sans-serif; font-size: 0.6rem; letter-spacing: 3px; color: var(--text-muted);
+}
+footer em { color: var(--sakura); font-style: normal; }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- LOADER -->
+  <div class="loader" :class="{ hidden: !loading }">
+    <div class="loader-wrap">
+      <div class="loader-ring"></div>
+      <div class="loader-ring-2"></div>
+      <span class="loader-char">⚔️</span>
     </div>
-    <!-- /.Site Preloader -->
-    <main class="wrapper">
-      <!--  header section -->
-      <header class="header-section">
-        <div class="header-nav">
-          <div class="container">
-            <div class="row">
-              <div class="col-md-2 col-sm-6 col-xs-6 brand-block">
-                <span class="logo-heading">
-                  <h2>Abhiruchi</h2>
-                </span>
-              </div>
-              <div class="col-md-10 col-sm-12 col-xs-12 navigation-block">
-                <button type="button" class="collapse-switch">
-                  <span class="icon-line"></span>
-                  <span class="icon-line"></span>
-                  <span class="icon-line"></span>
-                </button>
-                <ul class="nav-links">
-                  <li>
-                    <a href="#home">Home</a>
-                  </li>
-                  <li>
-                    <a href="#aboutMe">About Me</a>
-                  </li>
-                  <li>
-                    <a href="#skillset">Skill</a>
-                  </li>
-                  <li>
-                    <a href="#experience">Experience</a>
-                  </li>
-                  <li>
-                    <a href="#volunteer">Volunteer</a>
-                  </li>
-                  <li>
-                    <a href="#education">Education</a>
-                  </li>
-                  <li ng-if="false">
-                    <a href="#alumna">Alumna</a>
-                  </li>
-                  <li ng-if="false">
-                    <a href="#hobby">Hobby</a>
-                  </li>
-                  <li>
-                    <a href="#contact">Contact</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-      <!--  /.header section -->
-      <!--  main section -->
-      <section
-        class="hero-section"
-        style="background-image: url(images/hero-banner.jpg)"
-        id="home"
-      >
-        <div class="container custom-container">
-          <h2 class="heading-1-banner"></h2>
-          <p class="heading-2-banner">FRONTEND WEB Developer</p>
-        </div>
-      </section>
-      <!-- About ME -->
-      <section id="aboutMe" class="background-white-section">
-        <div class="section-heading" style="padding: 20px">
-          <h2 class="cherryHeader">ABOUT ME</h2>
-        </div>
-        <div >
-          <p class="about-me-subheading"> Indian | Daughter | Sister | F.R.I.E.N.D | Otaku | Developer | KVian</p>
-        </div>
-        <div class="row">
-          <div class="container">
-            <div class="col-md-6">
-              <div style="text-align: center">
-                <img
-                  src="images/profile-pic-2.jpeg"
-                  alt="ProfilePhoto"
-                  style="
-                    width: 400px;
-                    border: 10px solid #330000;
-                    border-radius: 50%;
-                  "
-                />
-              </div>
-            </div>
-            <div class="col-md-6">
-              <div
-                style="
-                  border-radius: 15px 50px;
-                  border-left: 5px solid #330000;
-                  border-right: 5px solid #330000;
-                "
-              >
-                <p
-                  style="
-                    font-size: 18px;
-                    line-height: 2;
-                    padding: 20px;
-                    font-weight: 500;
-                  "
-                >
-                  {{aboutMe}}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--  /.main section -->
-      <!-- Skill Set Section -->
-      <section class="our-collections" id="skillset">
-        <div class="container">
-          <div class="section-heading">
-            <h2 class="whiteHeader text-center">SKILLSET</h2>
-          </div>
-          <div class="skillset text-center">
-            <div class="rainbow" title="VueJS"> 
-              <p class="skill-name">VueJS</p>
-              <!-- <img alt="vuejs" src="images/vuejs.JPG" /> -->
-            </div>
-            <div class="rainbow" title="Jest">
-              <p class="skill-name">Jest</p>
-              <!-- <img alt="jest" src="images/jest.png" /> -->
-            </div>
-            <div class="rainbow" title="Vuetify">
-              <p class="skill-name">Vuetify</p>
-              <!-- <img alt="vuetify" src="images/vuetify.png" /> -->
-            </div>
-            <div class="rainbow" title="React Native">
-              <p class="skill-name">React Native</p>
-              <!-- <img alt="react native" src="images/react-native.png" /> -->
-            </div>
-            <div class="rainbow" title="ReactJS">
-              <p class="skill-name">ReactJS</p>
-              <!-- <img alt="reactJS" src="images/reactjs.png" /> -->
-            </div>
-            <div class="rainbow" title="Angular">
-              <p class="skill-name">Angular</p>
-              <!-- <img alt="angular" src="images/angular.png" /> -->
-            </div>
-            <div class="rainbow" title="AngularJS">
-              <p class="skill-name">AngularJS</p>
-              <!-- <img alt="angularJS" src="images/angularjs.png" /> -->
-            </div>
-            <div class="rainbow" title="TypeScript">
-              <p class="skill-name">TypeScript</p>
-              <!-- <img alt="typescript" src="images/ts.png" /> -->
-            </div>
-            <div class="rainbow" title="JavaScript">
-              <p class="skill-name">JavaScript</p>
-              <!-- <img alt="javascript" src="images/js.png" /> -->
-            </div>
-            <div class="rainbow" title="Bootstrap">
-              <p class="skill-name">Bootstrap</p>
-              <!-- <img alt="bootstrap" src="images/bootstrap.png" /> -->
-            </div>
-            <div class="rainbow" title="JQuery">
-              <p class="skill-name">JQuery</p>
-              <!-- <img alt="jquery" src="images/jquery.png" /> -->
-            </div>
-            <div class="rainbow" title="Web Accessibility">
-              <p class="skill-name">Web Accessibility</p>
-              <!-- <img alt="website-accessibility" src="images/website-accessibility.jpg" /> -->
-            </div>
-            <div class="rainbow" title="HTML5">
-              <p class="skill-name">HTML5</p>
-              <!-- <img alt="html5" src="images/html5.png" /> -->
-            </div>
-            <div class="rainbow" title="CSS3">
-              <p class="skill-name">CSS3</p>
-              <!-- <img alt="css3" src="images/css3.png" /> -->
-            </div>
-            <div class="rainbow" title="Git">
-              <p class="skill-name">Git</p>
-              <!-- <img alt="git" src="images/git.jpg" /> -->
-            </div>
-          </div>
-        </div>
-      </section>
+    <div class="loader-text">LOADING PORTFOLIO...</div>
+  </div>
 
-      <!--  experience section -->
-      <section class="our-collections background-white-section" id="experience">
-        <div class="container">
-          <div class="section-heading">
-            <h2 class="cherryHeader text-center">EXPERIENCE</h2>
-          </div>
-          <div class="experience" ng-repeat="m in experienceList">
-            <div class="row">
-              <h4>{{m.designation}}</h4>
-              <label>Company : </label>
-              <span class="p-l-2 text-spacing">{{m.company}}</span>
-            </div>
-            <div class="row">
-              <label>Period : </label>
-              <span class="p-l-2 text-spacing period">{{m.period}}</span>
-            </div>
-            <div class="row key-words">
-              <label>Technology : </label>
-              <span ng-repeat="k in m.technology.split(',')">
-                <span class="keywords p-l-2 text-spacing"> {{k}} </span>
-              </span>
-            </div>
-            <div ng-if="true" class="row project-name" ng-repeat="k in m.project">
-              <div>
-                <label>Project Name : </label>
-                <a href="{{k.link}}" target="_blank" ng-if="k.link">
-                  <span class="p-l-2 text-spacing" style="font-weight: 600"
-                    >{{k.name}}</span
-                  >
-                </a>
-                <span
-                  class="p-l-2 text-spacing"
-                  style="font-weight: 600"
-                  ng-if="!k.link"
-                  >{{k.name}}</span
-                >
-              </div>
-              <div style="margin-top: 5px">
-                <label>Technology Used : </label>
-                <span ng-repeat="u in k.technology_used.split(',')">
-                  <span class="keywords p-l-2 text-spacing"> {{u}} </span>
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!--  ./experience section -->
-      <!-- Volunteer Experience -->
-      <section class="our-collections" id="volunteer">
-        <div class="container">
-          <div class="section-heading">
-            <h2 class="whiteHeader text-center">VOLUNTEER EXPERIENCE</h2>
-          </div>
-          <ul class="row">
-            <li
-              ng-repeat="m in volunteerList"
-              class="text-center col-md-4 col-sm-11 col-xs-11"
-            >
-              <div class="flip-card">
-                <div class="flip-card-inner">
-                  <div class="flip-card-front">
-                    <h2>{{m.designation}}</h2>
-                  </div>
-                  <div class="flip-card-back">
-                    <p>{{m.description}}</p>
-                  </div>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
+  <!-- BG -->
+  <div class="bg-canvas"></div>
+  <div class="grid-lines"></div>
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
 
-      <!--  ./Volunteer Experience -->
-      <!--  education section -->
-      <section id="education" class="background-white-section">
-        <div class="container">
-          <div class="section-heading">
-            <h2 class="cherryHeader text-center">EDUCATION</h2>
-          </div>
-          <ul class="collection-listings">
-            <li ng-repeat="m in education">
-              <div class="row">
-                <h2>{{m.name}}</h2>
-              </div>
-              <div class="row">
-                <label>Institution : </label>
-                <a href="{{m.link}}" target="_blank"
-                  ><span class="p-l-2 text-spacing">{{m.institute}}</span></a
-                >
-              </div>
-              <div class="row" ng-style="{ 'border-bottom' : '0px' }">
-                <label>Period : </label>
-                <span class="p-l-2 text-spacing">{{m.period}}</span>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!--  /.education section -->
+  <!-- PETALS -->
+  <div class="petals-wrap">
+    <div v-for="p in petals" :key="p.id" class="petal"
+      :style="{ left: p.left+'%', animationDuration: p.dur+'s', animationDelay: p.delay+'s', fontSize: p.size+'px', opacity: p.opacity }">🌸</div>
+  </div>
 
-      <!--  Alumna section -->
-      <section ng-if="false" id="alumna">
-        <div class="container">
-          <div class="section-heading">
-            <h2 class="whiteHeader text-center">ALUMNA</h2>
-          </div>
-          <ul class="alumna-listings">
-            <li ng-repeat="m in alumna">
-              <div class="row">
-                <h2>{{m.name}}</h2>
-              </div>
-              <div class="row">
-                <label>Institution : </label>
-                <a href="{{m.link}}" target="_blank"
-                  ><span class="p-l-2 text-spacing">{{m.institute}}</span></a
-                >
-              </div>
-              <div class="row" ng-style="{ 'border-bottom' : '0px' }">
-                <div class="alumna-img"><img src="{{m.src}}" /></div>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!--  /.Alumnasection -->
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">Abhiruchi ⚡</a>
+    <button class="hamburger" :class="{ open: menuOpen }" @click="menuOpen = !menuOpen" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" :class="{ open: menuOpen }">
+      <li v-for="lnk in navLinks" :key="lnk.id">
+        <a :href="'#'+lnk.id" :class="{ active: activeSection === lnk.id }" @click="menuOpen=false">{{ lnk.label }}</a>
+      </li>
+    </ul>
+  </nav>
 
-      <!--  Hobbies section -->
-      <section ng-if="false" id="hobby" class="background-white-section">
-        <div class="container">
-          <div class="section-heading">
-            <h2 class="cherryHeader text-center">
-              HOBBIES | INTERESTS | SOCIAL
-            </h2>
-          </div>
-          <div style="text-align: center;">
-            <img
-              src="images/bike.jpg"
-              alt="ProfilePhoto"
-              style="
-                width: 400px;
-                border: 10px solid #330000;
-                border-radius: 50%;
-              "
-            />
-              <img
-                src="images/quote.jpeg"
-                alt="Don't give up on kindness just because the world is doing so."
-                class="tweet"
-              />
-          </div>
-          <ul class="hobby-listings">
-            <li ng-repeat="m in hobbies">
-              <div class="row">
-                <h2>{{m.name}}</h2>
-              </div>
-              <div
-                class="row hobby-list"
-                ng-style="{ 'border-bottom' : '0px' }"
-              >
-                <p class="hobby-names" ng-repeat="l in m.list">{{l}}</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <!--  /.Hobbies section -->
+  <!-- ════ HERO ════ -->
+  <section id="hero">
+    <div class="hero-ring">
+      <div class="hero-ring-outer"></div>
+      <div class="hero-ring-inner"></div>
+      <div class="hero-avatar">
+        <img src="images/profilepic2.png" alt="Profile picture" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" />
+      </div>
+    </div>
+    <h1 class="hero-name">Abhiruchi Maurya</h1>
+    <div class="hero-role">Technology Lead</div>
+    
+    <div class="hero-location">📍 Bengaluru, Karnataka, India</div>
+    <div class="hero-btns">
+      <a href="#experience" class="btn btn-cyan"><span>View Journey</span></a>
+      <a href="#contact"    class="btn btn-pink"><span>Contact Me</span></a>
+    </div>
+    <div class="scroll-hint">
+      <span>SCROLL</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
 
-      <!-- footer section -->
-      <footer class="footer-section" id="contact">
-        <div class="footer-links">
-          <div class="container">
-            <div class="row">
-              <div class="section-heading">
-                <h2>CONTACT 📞</h2>
-              </div>
-              <div class="text-center" style="margin-top: 30px">
-                <div class="col-md-4 col-sm-12 col-xs-12 contact-section">
-                  <p style="font-size: 18px; color: #ffffff">📌Location</p>
-                  <p style="font-size: 18px; color: #ffffb3">
-                    Austin, Texas, US
-                  </p>
-                </div>
-                <div
-                  class="col-md-4 col-sm-12 col-xs-12 contact-section"
-                  style="
-                    border-right: 5px dashed #ffff4d;
-                    border-left: 5px dashed #ffff4d;
-                  "
-                >
-                  <p style="font-size: 18px; color: #ffffff">
-                    Feel free to get in touch!
-                  </p>
-                  <p
-                    style="
-                      font-size: 18px;
-                      color: #ffffb3;
-                      padding: 10px;
-                      border: 2px solid #ffff4d;
-                    "
-                  >
-                    <span
-                      class="glyphicon glyphicon-envelope"
-                      style="margin-right: 10px"
-                    ></span>
-                    abhiruchimaurya10@gmail.com
-                  </p>
-                </div>
-                <div class="col-md-4 col-sm-12 col-xs-12">
-                  <div class="footer-social-links">
-                    <h6>I am social ! Stay connected</h6>
-                    <ul class="social-links">
-                      <li>
-                        <a href="https://twitter.com/abhiruchimaurya" target="_blank">
-                          <img
-                            src="images/twitter.png"
-                            alt="twitter"
-                            title="Twitter"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://github.com/AbhiruchiMaurya" target="_blank">
-                          <img
-                            src="images/github.png"
-                            alt="facebook"
-                            title="GitHub"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.linkedin.com/in/abhiruchi-maurya-365b5377/"
-                          target="_blank"
-                        >
-                          <img
-                            src="images/linkedin.png"
-                            alt="linkedin"
-                            title="Linkedin"
-                          />
-                        </a>
-                      </li>
-                      <li>
-                        <a href="https://msng.link/o/?@inaba10=tg" target="_blank">
-                          <img
-                            src="images/telegram.png"
-                            alt="telegram"
-                            title="Telegram me at @inaba10"
-                          />
-                        </a>
-                      </li>
-                      <!--                       <li>
-                        <a
-                          href="https://www.instagram.com/daphne_1017/"
-                        >
-                          <img
-                            src="images/insta.png"
-                            alt="Instagram"
-                            title="Instagram"
-                          />
-                        </a>
-                      </li> -->
-                      <!--                       <li>
-                        <a
-                          href="https://www.facebook.com/abhiruchimaurya/"
-                        >
-                          <img
-                            src="images/fb.png"
-                            alt="facebook"
-                            title="Facebook"
-                          />
-                        </a>
-                      </li> -->
-                      
-                    </ul>
-                    <!-- Buy me coffee -->
-                    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="abhiruchimaurya" data-color="#610505" data-emoji=""  data-font="Arial" data-text="Buy me a coffee" data-outline-color="#ffffff" data-font-color="#ffffff" data-coffee-color="#FFDD00" ></script>                  
-                  </div>
-                </div>
-              </div>
-            </div>
+  <!-- ════ ABOUT ════ -->
+  <div id="about" style="position:relative;z-index:2">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">About Me</h2>
+        <p class="section-sub">Story · Origin · Identity</p>
+        <div class="divider"></div>
+      </div>
+      <div class="about-grid reveal" style="transition-delay:0.15s">
+        <div class="about-avatar-col">
+          <div class="avatar-frame">
+                    <img src="images/profilepic.png" alt="Profile picture" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" />
+
+          </div>
+          <div class="status-badge">
+            <div class="status-dot"></div>
+            OPEN TO WORK
           </div>
         </div>
-      </footer>
-      <div class="code-block" style="background-color: #330000">
-        <div class="container text-center">
-          <p class="copy-right">
-            Copyright &copy; {{year}} Abhiruchi Maurya with ❤️
-          </p>
+        <div class="about-text">
+          <h3>⚡ The Developer Chronicles</h3>
+          <p>Hi, I'm <strong>Abhiruchi Maurya</strong> — a passionate Frontend Developer based in <strong>Bengaluru, India</strong>, weaving code and creativity into immersive digital experiences.</p>
+          <p>Like a protagonist in an anime arc, my journey through the tech world has been one of continuous growth — mastering frameworks, defeating bugs, and leveling up with every project.</p>
+          <p>I specialise in <strong>Vue, </strong>React, and Angular ecosystems. When I'm not coding, you'll find me exploring anime worlds discovering new adventures.</p>
+          <div class="about-tags">
+            <span v-for="t in personalTags" :key="t" class="about-tag">{{ t }}</span>
+          </div>
         </div>
       </div>
-      <!-- /.footer section -->
-    </main>
-    <!-- jQuery Library -->
-    <script src="js/jquery.min.js"></script>
-    <!-- Bootstrap JS Library -->
-    <script src="js/bootstrap.min.js"></script>
-    <!-- AngularJS Library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="js/data.js"></script>
-    <!-- transition jQ/JS -->
-    <script src="js/transition.js" type="text/javascript"></script>
-    <!-- Site Custom jQ/JS -->
-    <script src="js/custom.js" type="text/javascript"></script>
-  </body>
+    </div>
+  </div>
+
+  <!-- ════ SKILLS ════ -->
+  <div id="skills" style="position:relative;z-index:2;background:rgba(0,229,255,0.015)">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Skill Set</h2>
+        <p class="section-sub">Arsenal · Abilities · Power Level</p>
+        <div class="divider"></div>
+      </div>
+      <div class="skills-grid">
+        <div v-for="(sk, i) in skills" :key="sk.name"
+             class="skill-card reveal"
+             :data-skillidx="i"
+             :style="{ transitionDelay: (i*0.055)+'s' }">
+          <span class="skill-icon">{{ sk.icon }}</span>
+          <div class="skill-name">{{ sk.name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ EXPERIENCE TIMELINE ════ -->
+  <div id="experience" style="position:relative;z-index:2">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Experience</h2>
+        <p class="section-sub">Quest Log · Battles Won · XP Gained</p>
+        <div class="divider"></div>
+      </div>
+      <div class="timeline">
+        <div v-for="(exp, i) in experiences" :key="i" class="tl-item reveal" :style="{ transitionDelay: (i*0.12)+'s' }">
+          <div class="tl-content">
+            <div class="tl-designation">{{ exp.designation }}</div>
+            <div class="tl-company">🏢 {{ exp.company }}</div>
+            <div class="tl-chips">
+              <span v-for="t in exp.tech" :key="t" class="tl-chip">{{ t }}</span>
+            </div>
+            <div v-if="exp.projects.length" class="tl-projects">
+              <div v-for="p in exp.projects" :key="p.name" class="tl-proj">
+                🔗 <a v-if="p.link" :href="p.link" target="_blank">{{ p.name }}</a>
+                <span v-else>{{ p.name }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="tl-dot"></div>
+          <div class="tl-period">{{ exp.period }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ VOLUNTEER ════ -->
+  <div id="volunteer" style="position:relative;z-index:2;background:rgba(255,0,110,0.015)">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Volunteer</h2>
+        <p class="section-sub">Giving Back · Community · Heart</p>
+        <div class="divider"></div>
+      </div>
+      <div class="vol-grid">
+        <div v-for="(v, i) in volunteers" :key="i" class="vol-card reveal" :style="{ transitionDelay: (i*0.1)+'s' }">
+          <span class="vol-icon">{{ v.icon }}</span>
+          <div class="vol-title">{{ v.title }}</div>
+          <div class="vol-desc">{{ v.desc }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ EDUCATION ════ -->
+  <div id="education" style="position:relative;z-index:2">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Education</h2>
+        <p class="section-sub">Knowledge Arc · Training Grounds</p>
+        <div class="divider"></div>
+      </div>
+      <div class="edu-list">
+        <div v-for="(edu, i) in education" :key="i" class="edu-card reveal" :style="{ transitionDelay: (i*0.1)+'s' }">
+          <div class="edu-icon">{{ edu.icon }}</div>
+          <div>
+            <div class="edu-name">{{ edu.name }}</div>
+            <a :href="edu.link" target="_blank" class="edu-inst">{{ edu.institute }}</a>
+            <div class="edu-period">📅 {{ edu.period }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ HOBBIES ════ -->
+  <div id="hobbies" style="position:relative;z-index:2;background:rgba(255,215,0,0.01)">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Hobbies & Interests</h2>
+        <p class="section-sub">Side Quests · Passions · Power-Ups</p>
+        <div class="divider"></div>
+      </div>
+      <div class="hobby-wrap">
+        <div v-for="(h, i) in hobbies" :key="i" class="hobby-chip reveal" :style="{ transitionDelay: (i*0.07)+'s' }">
+          <span class="hobby-chip-icon">{{ h.icon }}</span>
+          <span>{{ h.name }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ CONTACT ════ -->
+  <div id="contact" style="position:relative;z-index:2;padding-bottom:4rem">
+    <div class="section-wrap">
+      <div class="section-head reveal">
+        <h2 class="section-title">Contact</h2>
+        <p class="section-sub">Connect · Collaborate · Create</p>
+        <div class="divider"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <h3>Let's Connect! 🌸</h3>
+          <p>Whether you want to collaborate on a project, discuss frontend wizardry, or just geek out about anime — I'm always happy to hear from you.</p>
+          <div class="c-row"><div class="c-ico">📍</div><span>Bengaluru, Karnataka, India</span></div>
+          <div class="c-row"><div class="c-ico">✉️</div><a href="mailto:abhiruchimaurya10@gmail.com">abhiruchimaurya10@gmail.com</a></div>
+          <div class="socials">
+            <a href="https://github.com/AbhiruchiMaurya" target="_blank" class="social-btn" title="GitHub">
+              <img src="images/github.png" alt="GitHub" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" />
+            </a>
+            <a href="https://www.linkedin.com/in/abhiruchi-maurya-365b5377/" target="_blank" class="social-btn" title="LinkedIn">
+              <img src="images/linkedin.png" alt="LinkedIn" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" />
+            </a>
+            <a href="https://twitter.com/abhiruchimaurya" target="_blank" class="social-btn" title="Twitter">
+              <img src="images/twitter.png" alt="Twitter" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" />
+            </a>
+            <a href="https://msng.link/o/?@inaba10=tg" target="_blank" class="social-btn" title="Telegram">
+              <img src="images/telegram.png" alt="Telegram" style="width:100%; height:100%; border-radius:50%; object-fit:cover;" />
+            </a>
+          </div>
+        </div>
+        <div class="contact-panel reveal" style="transition-delay:0.2s">
+          <span class="contact-panel-emoji">⚔️</span>
+          <h4>Ready for a New Quest?</h4>
+          <p>I'm currently open to new opportunities and exciting collaborations. Whether it's a full-time role, freelance project, or open-source adventure — let's build something amazing together!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer style="position:relative;z-index:2">
+    Copyright © {{ currentYear }} <em>Abhiruchi Maurya</em> · Made with <em>❤️</em> 
+  </footer>
+
+</div><!-- /#app -->
+
+<script>
+const { createApp, ref, computed, onMounted, onUnmounted } = Vue;
+
+createApp({
+  setup() {
+    const loading       = ref(true);
+    const menuOpen      = ref(false);
+    const activeSection = ref('hero');
+    const currentYear   = new Date().getFullYear();
+
+    /* ── PETALS ── */
+    const petals = Array.from({ length: 16 }, (_, i) => ({
+      id: i,
+      left:    Math.random() * 100,
+      dur:     8 + Math.random() * 10,
+      delay:  -Math.random() * 15,
+      size:    13 + Math.random() * 9,
+      opacity: 0.4 + Math.random() * 0.4,
+    }));
+
+    /* ── NAV ── */
+    const navLinks = [
+      { id: 'about',      label: 'About'      },
+      { id: 'skills',     label: 'Skills'     },
+      { id: 'experience', label: 'Experience' },
+      { id: 'volunteer',  label: 'Volunteer'  },
+      { id: 'education',  label: 'Education'  },
+      { id: 'hobbies',    label: 'Hobbies'    },
+      { id: 'contact',    label: 'Contact'    },
+    ];
+
+    /* ── ABOUT TAGS ── */
+    const personalTags = ['Developer', '🗾 Otaku', '⌨ KVian', '📚 Learner', '☕ Tea Lover','👥 Friend',' 🤱Mom'];
+
+    /* ── SKILLS ── */
+    const skills = ref([
+      { name: 'Vue.js',        icon: '💚' },
+      { name: 'React',         icon: '⚛️'},
+      { name: 'Angular',       icon: '🔴'},
+      { name: 'TypeScript',    icon: '🔷'},
+      { name: 'JavaScript',    icon: '🟡'},
+      { name: 'React Native',  icon: '📱'},
+      { name: 'Jest',          icon: '🧪'},
+      { name: 'Vuetify',       icon: '💎'},
+      { name: 'AngularJS',     icon: '🔺'},
+      { name: 'Bootstrap',     icon: '🅱'},
+      { name: 'jQuery',        icon: '💠'},
+      { name: 'HTML5',         icon: '🌐'},
+      { name: 'CSS3',          icon: '🎨'},
+      { name: 'Git',           icon: '🌿'},
+      { name: 'Accessibility', icon: '♿'},
+    ]);
+
+    /* ── EXPERIENCE ── */
+    const experiences = [
+      {
+        designation: "Technology Lead",
+        company: "Infosys Limited",
+        period: "2020-Present",
+        tech: ["VueJS", "ReactJS", "React Native", "Web Accessibility"],
+        projects: [
+          {
+            name: "CircorSmart",
+            
+            link: "https://androidappsapk.co/detail-circorsmart/",
+          },
+          {
+            name: "COVID Tools",
+            technology_used: "VueJS, Jest, Web Accessibility",
+          },
+          {
+            name: "Campus Conference Center",
+            
+          },
+          {
+            name: "Workplace Web",
+            
+          },
+          {
+            name: "Workplace Web Theme",
+            
+          }
+        ],
+      },
+      {
+        designation: "Software Engineer",
+        company: "Iglulabs Pvt Ltd",
+        period: "2019-2020",
+        tech: ["Angular", "HTML5", "CSS3", "Bootstrap 4"],
+        projects: [
+          {
+            name: "Alum-n-i Web App",
+            link: "https://staging.alum-n-i.com/",
+          },
+          {
+            name: "Alum-n-i Dashboard"
+          },
+        ],
+      },
+      {
+        designation: "Software Engineer",
+        company: "Sing Sys Software Pvt Ltd",
+        period: "2017-2019",
+        tech: ["AngularJS", "HTML", "CSS", "Bootstrap", "jQuery"],
+        projects: [
+          {
+            name: "OAKS ERP",
+            link: "https://www.oaks.com.sg/",
+          },
+          {
+            name: "Tapow",
+          },
+        ],
+      }
+    ];
+
+    /* ── VOLUNTEER ── */
+    const volunteers = [
+      { icon: '🎨',
+        title: "Design Head",
+        desc: "Design Head for Gantavya Times ( College Tech Magazine )",
+      },
+      {
+        icon: '📚',
+        title: "Coordinator",
+        desc:
+          "Worked as coordinator for Literati Cell ( College Literature Club ) in 3rd year of BTech.",
+      },
+      {
+        icon: '💻',
+        title: "Developer",
+        desc:
+          "Worked as developer for Mix-Hub ( Startup ) in 3rd & 4rth year of BTech.",
+      },
+      {
+        icon: '🩸',
+        title: "Blood Donor",
+        desc:
+          "Blood donation camp organized by Dr.Ram Manohar Lohia Hospital.",
+      },
+      {
+        icon: '🎨',
+        title: "Poster Designer",
+        desc:
+          "Worked as poster designer for Literati Cell ( College Literature Club ), Euphony Club ( College Singing Club ), Informal Cell in 2nd & 3rd year of BTech.",
+      },
+      {
+        icon: '🎨',
+        title: "Designer",
+        desc:
+          "Volunteered as Designer for INDA – Indo Nepal Doctor’s Association for 2015 Nepal earthquake.",
+      },
+      {
+        icon: '📚',
+        title: "Assistant-Coordinator",
+        desc:
+          "Worked as assistant coordinator for Literati Cell ( College Literature Club ) in 2nd year of BTech.",
+      },
+      {
+        icon: '📚',
+        title: "Volunteer",
+        desc:
+          "Worked as assistant coordinator for Literati Cell ( College Literature Club )  in 1st year of BTech.",
+      },
+    ];
+
+    /* ── EDUCATION ── */
+    const education = [
+      { icon: '🎓', name: 'B.Tech — IT', institute: 'Shri Ramswaroop Memorial Group of Professional Colleges',  link: 'https://srmcem.ac.in/', period: '2013 – 2017' },
+      { icon: '🏫', name: 'Intermediate',      institute: 'St. Anthony\'s Senior Secondary School', link: 'https://www.stanthonyschools.org/', period: '2009 – 2013' },
+      { icon: '📚', name: 'Student',                     institute: 'Kendriya Vidyalaya (KV), Army School', link: '#', period: 'As kid' },
+    ];
+
+    /* ── HOBBIES ── */
+    const hobbies = [
+      { icon: '🎌', name: 'Anime'      },
+      { icon: '📖', name: 'Reading'            },
+      { icon: '🎵', name: 'Anime OSTs'         },
+      { icon: '✈️', name: 'Travelling'         },
+    ];
+
+    /* ── INTERSECTION OBSERVER ── */
+    let revealObs, sectionObs;
+
+    onMounted(() => {
+      // Hide loader
+      setTimeout(() => { loading.value = false; }, 1600);
+
+      setTimeout(() => {
+        // Reveal observer
+        revealObs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('visible');
+            // Skill bar trigger
+            const idx = entry.target.dataset.skillidx;
+            if (idx !== undefined) skills.value[parseInt(idx)].on = true;
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+        document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+        // Active section observer
+        sectionObs = new IntersectionObserver((entries) => {
+          entries.forEach(e => { if (e.isIntersecting) activeSection.value = e.target.id; });
+        }, { threshold: 0.25 });
+        ['hero','about','skills','experience','volunteer','education','hobbies','contact']
+          .forEach(id => { const el = document.getElementById(id); if (el) sectionObs.observe(el); });
+      }, 1800);
+    });
+
+    onUnmounted(() => {
+      revealObs?.disconnect();
+      sectionObs?.disconnect();
+    });
+
+    return {
+      loading, menuOpen, activeSection, currentYear,
+      petals, navLinks, personalTags,
+      skills, experiences, volunteers, education, hobbies,
+    };
+  }
+}).mount('#app');
+</script>
+</body>
 </html>
