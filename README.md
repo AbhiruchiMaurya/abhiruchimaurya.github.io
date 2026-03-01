@@ -16,7 +16,7 @@
 
 | Role | Company | Period |
 |---|---|---|
-| Technology Lead (Onsite) | Infosys Limited | 2024 – Present |
+| Technology Lead (Onsite| Austin, Texas) | Infosys Limited | 2024 – Present |
 | Technology Analyst | Infosys Limited | 2020 – 2024 |
 | Software Engineer | Iglulabs Pvt Ltd | 2019 – 2020 |
 | Software Engineer | Sing Sys Software Pvt Ltd | 2017 – 2019 |
@@ -41,8 +41,7 @@
 
 <div align="center">
 
-Made with ❤️ & 🌸 by **Abhiruchi Maurya**  
-*Bengaluru, India*
-
+Made with ❤️ by **Abhiruchi Maurya**  
 </div>
+
 
